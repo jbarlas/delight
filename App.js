@@ -1,8 +1,29 @@
-import { React } from "react";
+import { React, useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Image, TextInput, Button  } from "react-native";
+import { StyleSheet, Text, View, Image, TextInput, Button } from "react-native";
+import { Overlay } from '@rneui/base';
+import { ButtonGroup } from '@rneui/themed';
+import Popup from './src/components/Popup.jsx'
 
 export default function App() {
+  const [unmatchVisible, setUnmatchVisible] = useState(false);
+  const [hasUnmatched, setHasUnmatched] = useState(false);
+
+  const buttonPress = () => {
+    setUnmatchVisible(!unmatchVisible);
+    console.log(unmatchVisible);
+  }
+
+  const handleUnmatching = (value) => {
+    if (value == 0) {
+      setHasUnmatched(true)
+      console.log("yes");
+    } else {
+      console.log("no")
+    }
+    setUnmatchVisible(false);
+  }
+
   return (
     <View style={styles.container}>
       <Image source={require("./assets/DelightLogo.png")}></Image>
@@ -14,14 +35,14 @@ export default function App() {
         // onChangeText={onChangeNumber}
         // value={input}
         placeholder="Full Name"
-        // keyboardType="numeric"
+      // keyboardType="numeric"
       />
       <TextInput
         style={styles.input}
         // onChangeText={onChangeNumber}
         // value={input}
         placeholder="Email"
-        // keyboardType="numeric"
+      // keyboardType="numeric"
       />
       <TextInput
         style={styles.input}
@@ -40,11 +61,13 @@ export default function App() {
         secureTextEntry={true}
       />
       <Button
-        onPress={() => console.log("pressed button")}
+        onPress={buttonPress}
         title="Create"
         color="#841584"
         accessibilityLabel="create account"
       />
+      <Popup isVisible={unmatchVisible} handlePress={handleUnmatching} options={['Confirm']} text={text2}></Popup>
+      {/* <Popup isVisible={unmatchVisible} handlePress={handleUnmatching} options={['Yes', 'No']} text={text}></Popup> */}
     </View>
   );
 }
@@ -66,4 +89,23 @@ const styles = StyleSheet.create({
     height: 36,
     width: 90,
   },
+  text: {
+    textAlign: "center",
+    paddingVertical: 5,
+    fontSize: 16,
+  },
 });
+
+
+const text = 
+<Text style={styles.text}>
+Are you sure this person is not
+<Text style={{fontWeight: 'bold'}}> the one </Text>
+for you?
+</Text>
+
+const text2 =
+<View>
+<Text style={{...styles.text, fontWeight: 'bold'}}>Reaction Sent!</Text>
+<Text style={styles.text}>You will be matched if Jeff reacts to your profile too!</Text>
+</View>
