@@ -2,14 +2,24 @@ import React from 'react'
 import { StyleSheet, Text, KeyboardAvoidingView, TextInput, View } from "react-native";
 import { Card, Button as IconButton } from '@rneui/themed';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { patchWebProps } from '@rneui/base';
 
-export default function Popup() {
+export default function Popup(props) {
+    const handleReactionSent = () => {
+        props.setUnmatchVisible(true);
+        props.isMsgVisible(false);
+    }
     return (
         <KeyboardAvoidingView
             behavior={Platform.OS === "ios" ? "padding" : "height"}
             style={styles.container}
         >
-            <Ionicons name="close-circle-outline" color="black" size={40} style={{ right: -150, marginTop: 35 }}></Ionicons>
+            <Ionicons 
+            onPress={() => props.isMsgVisible(false)}
+            name="close-circle-outline" 
+            color="black" 
+            size={40} 
+            style={{ right: -150, marginTop: 35 }}></Ionicons>
             <View>
                 <Card containerStyle={{ marginBottom: 15, width: 225 }}>
                     <Card.Title>I enjoy...</Card.Title>
@@ -20,13 +30,14 @@ export default function Popup() {
                 </Card>
                 <View style={styles.messaging}>
                     <IconButton
-                        onPress={() => console.log("send")}
+                        onPress={handleReactionSent}
                         icon={<Ionicons name="send" color="black" size={20}></Ionicons>}
-                        color="white"
+                        color="rgba(240, 242, 246, 0)"
                     />
                     <TextInput
                         autoFocus={true}
                         style={{ ...styles.input, width: "80%" }}
+                        // onSubmitEditing={handleReactionSent}
                     />
                 </View>
             </View>
@@ -39,13 +50,14 @@ const styles = StyleSheet.create({
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
+        backgroundColor: "rgba(240, 242, 246, 0.95)",
     },
     container: {
         flex: 1,
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        backgroundColor: "#fff",
+        backgroundColor: "rgba(240, 242, 246, 0.8)",
         alignItems: "center",
         bottom: 0,
     },

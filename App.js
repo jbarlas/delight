@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Image, TextInput, Button, Keyboard, KeyboardAvoidingView } from "react-native";
+import { StyleSheet, Text, View, Image, TextInput, Button, Modal } from "react-native";
 import { BottomSheet } from '@rneui/themed';
 import Popup from './src/components/Popup.jsx'
 import MessagePrompt from './src/components/MessagePrompt.jsx'
@@ -28,7 +28,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      {/* <Image source={require("./assets/DelightLogo.png")}></Image>
+      <Image source={require("./assets/DelightLogo.png")}></Image>
       <Text>Delight</Text>
       <Text>Find the one for you</Text>
       <StatusBar style="auto" />
@@ -63,13 +63,22 @@ export default function App() {
         secureTextEntry={true}
       />
       <Button
-        onPress={buttonPress}
+        onPress={() => isMsgVisible(!msgVisible)}
         title="Create"
         color="#841584"
         accessibilityLabel="create account"
-      /> */}
-       <MessagePrompt />
-      
+      />
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={msgVisible}
+        onRequestClose={() => {
+          isMsgVisible(!msgVisible);
+        }}
+      >
+        <MessagePrompt isMsgVisible={isMsgVisible} setUnmatchVisible={setUnmatchVisible} />
+      </Modal>
 
       <Popup isVisible={unmatchVisible} handlePress={handleUnmatching} options={['Confirm']} text={text2}></Popup>
       {/* <Popup isVisible={unmatchVisible} handlePress={handleUnmatching} options={['Yes', 'No']} text={text}></Popup> */}
