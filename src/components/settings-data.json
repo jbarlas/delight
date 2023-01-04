@@ -1,0 +1,26 @@
+[
+    {
+        "iconName": "ios-options",
+        "text": "Preferences"
+    },
+    {
+        "iconName": "pencil",
+        "text": "Edit Profile"
+    },
+    {
+        "iconName": "newspaper-outline",
+        "text": "Terms of Use"
+    },
+    {
+        "iconName": "people",
+        "text": "About Us"
+    },
+    {
+        "iconName": "help-buoy",
+        "text": "Help"
+    },
+    {
+        "iconName": "trash",
+        "text": "Delete Account"
+    }
+]
