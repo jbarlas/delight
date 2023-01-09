@@ -3,26 +3,20 @@ import ImageSlider from "../src/components/imageSlider";
 import PromptSlider from "../src/components/promptSlider";
 import { ChaChaData } from "../src/components/chacha";
 import { StyleSheet, Text, View, Image, SafeAreaView } from "react-native";
-import xbutton from "../assets/xcircle.png";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function Profile() {
   return (
     <View style={styles.container}>
       <View style={styles.top}>
         <SafeAreaView style={styles.topinfo}>
-          <Image source={xbutton} style={styles.xbutton}></Image>
-          <Image
-            source={{
-              uri: "https://i.ytimg.com/vi/JKx_Sa7CFMY/maxresdefault.jpg",
-            }}
-            style={styles.profilepic}
-          ></Image>
+        <Image source={ChaChaData.profile} style={styles.profilepic}></Image>
           <View style={styles.name}>
             <Text style={{ fontSize: 22, fontWeight: "bold" }}>
               {ChaChaData.name}
             </Text>
             <Text style={{ fontSize: 16, paddingTop: 5 }}>
-              {ChaChaData.compatible}% Compatible!
+              Profile {ChaChaData.compatible}% Complete!
             </Text>
           </View>
         </SafeAreaView>
@@ -57,11 +51,17 @@ export default function Profile() {
       </View>
       <View style={styles.slideshows}>
         <View style={styles.picslide}>
-          <Text style={[styles.pictext, { marginBottom: -20 }]}>Gallery</Text>
+          <View style={styles.add}>
+            <Text style={styles.pictext}>Gallery</Text>
+            <Ionicons name="add" size={25} />
+          </View>
           <ImageSlider images={ChaChaData.images} />
         </View>
         <View style={styles.picslide}>
-          <Text style={styles.pictext}>Prompts</Text>
+          <View style={styles.add}>
+            <Text style={styles.pictext}>Prompts</Text>
+            <Ionicons name="add" size={25} />
+          </View>
           <PromptSlider prompts={ChaChaData.prompts} />
         </View>
       </View>
@@ -127,8 +127,15 @@ const styles = StyleSheet.create({
     flex: 0.5,
   },
   pictext: {
-    paddingLeft: "8%%",
     fontSize: 17,
     fontWeight: "bold",
+  },
+  add: {
+    paddingLeft: "8%",
+    paddingRight: "15%",
+    direction: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: -2,
   },
 });
