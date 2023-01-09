@@ -34,16 +34,16 @@ const ImageSlider = (props) => {
       ) : (
         <Image
           style={[styles.swipepics, { marginRight: -180 }]}
-          source={{ uri: images[prevImage] }}
+          source={images[prevImage]}
         />
       )}
-      <Image style={styles.slideshowpics} source={{ uri: images[image] }} />
+      <Image style={styles.slideshowpics} source={images[image]} />
       {nextImage === length ? (
         <></>
       ) : (
         <Image
           style={[styles.swipepics, { marginLeft: -180 }]}
-          source={{ uri: images[nextImage] }}
+          source={images[nextImage]}
         />
       )}
       <Button

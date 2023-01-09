@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
     paddingTop: 5,
     paddingLeft: 8,
     fontWeight: "bold",
+    paddingRight: 5,
   },
   promptbody: {
     fontSize: 16,
