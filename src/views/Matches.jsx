@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
   },
   bar: {
     flexDirection: "row",
-    backgroundColor: "F0F2F6",
+    backgroundColor: "#F0F2F6",
     borderWidth: 0.5,
   },
   bartext: {
