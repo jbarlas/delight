@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Login from "./views/Login";
 import Profile from "./views/Profile";
-import Settings from "./views/Settings";
+import Settings from "./src/views/Settings";
 
 const Tab = createBottomTabNavigator();
 
