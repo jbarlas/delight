@@ -1,125 +1,48 @@
 import { React, useState } from "react";
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Image, TextInput, Button, Modal } from "react-native";
-import { BottomSheet } from '@rneui/themed';
-import Popup from './src/components/Popup.jsx'
-import MessagePrompt from './src/components/MessagePrompt.jsx'
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import Login from "./views/Login";
+import Profile from "./views/Profile";
+import Settings from "./views/Settings";
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
-  const [unmatchVisible, setUnmatchVisible] = useState(false);
-  const [hasUnmatched, setHasUnmatched] = useState(false);
-
-  const [msgVisible, isMsgVisible] = useState(false);
-
-  const buttonPress = () => {
-    setUnmatchVisible(!unmatchVisible);
-    console.log(unmatchVisible);
-  }
-
-  const handleUnmatching = (value) => {
-    if (value == 0) {
-      setHasUnmatched(true)
-      console.log("yes");
-    } else {
-      console.log("no")
-    }
-    setUnmatchVisible(false);
-  }
-
+  const [matched, setMatched] = useState(false);
   return (
-    <View style={styles.container}>
-      <Image source={require("./assets/DelightLogo.png")}></Image>
-      <Text>Delight</Text>
-      <Text>Find the one for you</Text>
-      <StatusBar style="auto" />
-      <TextInput
-        style={styles.input}
-        // onChangeText={onChangeNumber}
-        // value={input}
-        placeholder="Full Name"
-      // keyboardType="numeric"
-      />
-      <TextInput
-        style={styles.input}
-        // onChangeText={onChangeNumber}
-        // value={input}
-        placeholder="Email"
-      // keyboardType="numeric"
-      />
-      <TextInput
-        style={styles.input}
-        // onChangeText={onChangeNumber}
-        // value={input}
-        placeholder="Password"
-        // keyboardType="numeric"
-        secureTextEntry={true}
-      />
-      <TextInput
-        style={styles.input}
-        // onChangeText={onChangeNumber}
-        // value={input}
-        placeholder="Confirm Password"
-        // keyboardType="numeric"
-        secureTextEntry={true}
-      />
-      <Button
-        onPress={() => isMsgVisible(!msgVisible)}
-        title="Create"
-        color="#841584"
-        accessibilityLabel="create account"
-      />
+    <>
+      <NavigationContainer>
+      <Tab.Navigator screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
 
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={msgVisible}
-        onRequestClose={() => {
-          isMsgVisible(!msgVisible);
-        }}
-      >
-        <MessagePrompt isMsgVisible={isMsgVisible} setUnmatchVisible={setUnmatchVisible} />
-      </Modal>
+            if (route.name === 'Login') {
+              iconName = focused
+                ? 'person'
+                : 'person-outline';
+            } else if (route.name === 'Profile') {
+              iconName = focused ? 'heart' : 'heart-outline';
+            } else if (route.name === 'Settings') {
+              iconName = focused
+              ? 'settings'
+              : 'settings-outline';
+            }
 
-      <Popup isVisible={unmatchVisible} handlePress={handleUnmatching} options={['Confirm']} text={text2}></Popup>
-      {/* <Popup isVisible={unmatchVisible} handlePress={handleUnmatching} options={['Yes', 'No']} text={text}></Popup> */}
-    </View>
+            // You can return any component that you like here!
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+          tabBarActiveTintColor: 'black',
+          tabBarInactiveTintColor: 'gray',
+          tabBarActiveBackgroundColor: "#53ABBB",
+          tabBarInactiveBackgroundColor: "#65D9D5",
+          headerShown: false
+        })}>
+        <Tab.Screen name="Login" component={Login} />
+        <Tab.Screen name="Profile" component={Profile} initialParams={{matched: matched}}/>
+        <Tab.Screen name="Settings" component={Settings} />
+      </Tab.Navigator>
+    </NavigationContainer>
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  input: {
-    borderWidth: 1,
-    width: 200,
-    padding: 5,
-    margin: 15,
-  },
-  createAccountButton: {
-    height: 36,
-    width: 90,
-  },
-  text: {
-    textAlign: "center",
-    paddingVertical: 5,
-    fontSize: 16,
-  },
-});
-
-
-const text =
-  <Text style={styles.text}>
-    Are you sure this person is not
-    <Text style={{ fontWeight: 'bold' }}> the one </Text>
-    for you?
-  </Text>
-
-const text2 =
-  <View>
-    <Text style={{ ...styles.text, fontWeight: 'bold' }}>Reaction Sent!</Text>
-    <Text style={styles.text}>You will be matched if Jeff reacts to your profile too!</Text>
-  </View>
