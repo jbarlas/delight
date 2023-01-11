@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import { View, StyleSheet, Button, Text } from "react-native";
+import { View, StyleSheet, Button, Text, Pressable } from "react-native";
 
 const PromptSlider = (props) => {
   const prompts = props.prompts;
@@ -22,6 +22,12 @@ const PromptSlider = (props) => {
     }
   };
 
+  const handlePress = () => {
+    if (prompt == 0) {
+      props.reactFn()
+    }
+  }
+
   return (
     <View style={styles.slideshow}>
       <Button
@@ -34,10 +40,15 @@ const PromptSlider = (props) => {
       ) : (
         <View style={[styles.swipepics, { marginRight: -180 }]} />
       )}
+
       <View style={styles.slideshowpics}>
+        <Pressable onPress={handlePress} style={{ height: "100%"}}>
         <Text style={styles.prompthead}>{prompts[prompt][0]}</Text>
         <Text style={styles.promptbody}>{prompts[prompt][1]}</Text>
+        </Pressable>
       </View>
+
+      
       {nextPrompt === length ? (
         <></>
       ) : (

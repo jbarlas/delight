@@ -9,10 +9,14 @@ import {
   Image,
   SafeAreaView,
   TouchableOpacity,
-  Button
+  Button,
+  Modal,
+  Pressable
 } from "react-native";
 import xbutton from "../assets/xcircle.png";
 import { createStackNavigator } from "@react-navigation/stack";
+import Popup from '../src/components/Popup.jsx'
+import MessagePrompt from '../src/components/MessagePrompt.jsx'
 
 const Stack = createStackNavigator();
 
@@ -34,6 +38,8 @@ export default function Profile({ route }) {
 function ProfilePage({ route, navigation }) {
   const userData = route.params.userData;
   const [matched, setMatched] = useState(route.params.matched)
+  const [confirmationVisible, setConfirmationVisible] = useState(false);
+  const [msgVisible, isMsgVisible] = useState(false);
 
   const toggleMatched = () => {
     setMatched(!matched);
@@ -41,6 +47,13 @@ function ProfilePage({ route, navigation }) {
     // this does nothing but we need to do something like this i think
     navigation.setOptions("Root", {matched: !matched})
   }
+
+  const reactionText =
+  <View>
+    <Text style={{ ...styles.text, fontWeight: 'bold' }}>Reaction Sent!</Text>
+    <Text style={styles.text}>You will be matched if {userData.name} reacts to your profile too!</Text>
+  </View>
+
   return (
     <View style={styles.container}>
       <View style={{...styles.top, backgroundColor: matched ? "#F6BCD4" : "#65D9D5"}}>
@@ -105,10 +118,24 @@ function ProfilePage({ route, navigation }) {
         </View>
         <View style={styles.picslide}>
           <Text style={styles.pictext}>Prompts</Text>
-          <PromptSlider prompts={userData.prompts} />
+          <PromptSlider prompts={userData.prompts} reactFn={() => isMsgVisible(!msgVisible)}/>
+
+          
         </View>
       </View>
       <Button title="Toggle Match" onPress={toggleMatched}></Button>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={msgVisible}
+        onRequestClose={() => {
+          isMsgVisible(!msgVisible);
+        }}
+      >
+        <MessagePrompt isMsgVisible={isMsgVisible} setUnmatchVisible={setConfirmationVisible} prompt={userData.prompts[0][0]} answer={userData.prompts[0][1]}/>
+      </Modal>
+
+      <Popup isVisible={confirmationVisible} handlePress={() => setConfirmationVisible(!confirmationVisible)} options={['Confirm']} text={reactionText}></Popup>
     </View>
   );
 }
@@ -173,5 +200,10 @@ const styles = StyleSheet.create({
     paddingLeft: "8%%",
     fontSize: 17,
     fontWeight: "bold",
+  },
+  text: {
+    textAlign: "center",
+    paddingVertical: 5,
+    fontSize: 16,
   },
 });

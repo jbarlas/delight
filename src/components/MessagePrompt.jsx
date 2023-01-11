@@ -22,10 +22,10 @@ export default function Popup(props) {
             style={{ right: -150, marginTop: 35 }}></Ionicons>
             <View>
                 <Card containerStyle={{ marginBottom: 15, width: 225 }}>
-                    <Card.Title>I enjoy...</Card.Title>
+                    <Card.Title>{props.prompt}</Card.Title>
                     <Card.Divider />
                     <Text>
-                        Long walks on the beach and you {';)'}
+                        {props.answer}
                     </Text>
                 </Card>
                 <View style={styles.messaging}>
