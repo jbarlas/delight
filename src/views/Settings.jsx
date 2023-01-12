@@ -2,11 +2,29 @@ import { React } from "react";
 import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import settingsData from "../components/settings-data.json"
+import { createStackNavigator } from "@react-navigation/stack";
 
-export default function Settings(props) {
+const Stack = createStackNavigator();
+
+export default function Profile({ route }) {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen
+        name="user"
+        component={SettingsPage}
+        initialParams={{
+          matched: route.params.matched,
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function SettingsPage({ route, navigation }) {
+  const matched = route.params.matched;
   return (
     <View style={styles.container}>
-      <View style={{...styles.top, backgroundColor: (props.matched ? "#F6BCD4" : "#65D9D5")}}>
+      <View style={{...styles.top, backgroundColor: (matched ? "#F6BCD4" : "#65D9D5")}}>
         <SafeAreaView style={styles.topinfo}>
           <Text style={styles.name}>
             Settings
@@ -18,7 +36,7 @@ export default function Settings(props) {
       {settingsData.map((item) =>
         <View style={styles.row}>
           <View style={styles.mainContent}>
-            <Ionicons name={item.iconName} color={props.matched ? "#DC8EAE" : "#53ABBB"} size={40}></Ionicons>
+            <Ionicons name={item.iconName} color={matched ? "#DC8EAE" : "#53ABBB"} size={40}></Ionicons>
             <Text style={styles.itemText}>{item.text}</Text>
           </View>
           <Ionicons name="ios-chevron-forward" color="black" size={30}></Ionicons>

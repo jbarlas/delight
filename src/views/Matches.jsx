@@ -13,10 +13,10 @@ import {
   Modal,
   Pressable
 } from "react-native";
-import xbutton from "../assets/xcircle.png";
+import { Ionicons } from "@expo/vector-icons";
 import { createStackNavigator } from "@react-navigation/stack";
-import Popup from '../src/components/Popup.jsx'
-import MessagePrompt from '../src/components/MessagePrompt.jsx'
+import Popup from '../components/Popup.jsx'
+import MessagePrompt from '../components/MessagePrompt.jsx'
 
 const Stack = createStackNavigator();
 
@@ -65,7 +65,13 @@ function ProfilePage({ route, navigation }) {
               })
             }
           >
-            <Image source={xbutton} style={styles.xbutton}></Image>
+          <Ionicons
+            name="close-circle-outline"
+            size={40}
+            color={"black"}
+            backgroundColor={"black"}
+            style={styles.xbutton}
+          ></Ionicons>
           </TouchableOpacity>
           <Image
             source={{

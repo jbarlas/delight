@@ -19,7 +19,7 @@ export default function Popup(props) {
             name="close-circle-outline" 
             color="black" 
             size={40} 
-            style={{ right: -150, marginTop: 35 }}></Ionicons>
+            style={{ right: -135, marginTop: 48 }}></Ionicons>
             <View>
                 <Card containerStyle={{ marginBottom: 15, width: 225 }}>
                     <Card.Title>{props.prompt}</Card.Title>
@@ -33,7 +33,7 @@ export default function Popup(props) {
                         onPress={handleReactionSent}
                         icon={<Ionicons name="send" color="black" size={20}></Ionicons>}
                         color="rgba(240, 242, 246, 0)"
-                    />
+                       />
                     <TextInput
                         autoFocus={true}
                         style={{ ...styles.input, width: "80%" }}
@@ -66,5 +66,12 @@ const styles = StyleSheet.create({
         width: 200,
         padding: 5,
         margin: 15,
+    },
+    xbutton: {
+        position: "absolute",
+        height: 45,
+        width: 45,
+        top: 55,
+        left: "83%",
     },
 })

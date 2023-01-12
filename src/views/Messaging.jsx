@@ -2,6 +2,7 @@ import { React } from "react";
 import { StyleSheet, Text, View, SafeAreaView, Image, TextInput, KeyboardAvoidingView, ScrollView } from "react-native";
 import { Card, Button as IconButton } from '@rneui/themed';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import AnikaProfile from "../../assets/anika_profile.jpeg"
 
 export default function Messaging() {
     return (
@@ -9,9 +10,7 @@ export default function Messaging() {
             <View style={styles.top}>
                 <SafeAreaView style={styles.topinfo}>
                     <Image
-                        source={{
-                            uri: "https://i.ytimg.com/vi/JKx_Sa7CFMY/maxresdefault.jpg",
-                        }}
+                        source={AnikaProfile}
                         style={styles.profilepic}
                     ></Image>
                     <View style={styles.name}>

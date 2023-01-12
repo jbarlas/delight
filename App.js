@@ -2,8 +2,8 @@ import { React, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import Login from "./views/Login";
-import Profile from "./views/Profile";
+import Matches from "./src/views/Matches";
+import Profile from "./src/views/Profile";
 import Settings from "./src/views/Settings";
 
 const Tab = createBottomTabNavigator();
@@ -17,11 +17,11 @@ export default function App() {
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
 
-            if (route.name === 'Login') {
+            if (route.name === 'Profile') {
               iconName = focused
                 ? 'person'
                 : 'person-outline';
-            } else if (route.name === 'Profile') {
+            } else if (route.name === 'Matches') {
               iconName = focused ? 'heart' : 'heart-outline';
             } else if (route.name === 'Settings') {
               iconName = focused
@@ -38,9 +38,9 @@ export default function App() {
           tabBarInactiveBackgroundColor: "#65D9D5",
           headerShown: false
         })}>
-        <Tab.Screen name="Login" component={Login} />
         <Tab.Screen name="Profile" component={Profile} initialParams={{matched: matched}}/>
-        <Tab.Screen name="Settings" component={Settings} />
+        <Tab.Screen name="Matches" component={Matches} initialParams={{matched: matched}}/>
+        <Tab.Screen name="Settings" component={Settings} initialParams={{matched: matched}}/>
       </Tab.Navigator>
     </NavigationContainer>
     </>
