@@ -1,8 +1,7 @@
 import { React, useState } from "react";
 import ImageSlider from "../components/imageSlider";
 import PromptSlider from "../components/promptSlider";
-import { AnikaData } from "../components/anika";
-import { ChaChaData, AnotherUser } from "../components/UserData";
+import { ChaChaData, AnikaData } from "../components/UserData";
 import {
     StyleSheet,
     Text,

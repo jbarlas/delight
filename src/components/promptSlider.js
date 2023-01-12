@@ -24,9 +24,9 @@ const PromptSlider = (props) => {
 
   const handlePress = () => {
     if (prompt == 0) {
-      props.reactFn()
+      props.reactFn();
     }
-  }
+  };
 
   return (
     <View style={styles.slideshow}>
@@ -42,13 +42,12 @@ const PromptSlider = (props) => {
       )}
 
       <View style={styles.slideshowpics}>
-        <Pressable onPress={handlePress} style={{ height: "100%"}}>
-        <Text style={styles.prompthead}>{prompts[prompt][0]}</Text>
-        <Text style={styles.promptbody}>{prompts[prompt][1]}</Text>
+        <Pressable onPress={handlePress} style={{ height: "100%" }}>
+          <Text style={styles.prompthead}>{prompts[prompt][0]}</Text>
+          <Text style={styles.promptbody}>{prompts[prompt][1]}</Text>
         </Pressable>
       </View>
 
-      
       {nextPrompt === length ? (
         <></>
       ) : (
@@ -90,12 +89,14 @@ const styles = StyleSheet.create({
     fontSize: 20,
     paddingTop: 5,
     paddingLeft: 8,
+    paddingRight: 5,
     fontWeight: "bold",
   },
   promptbody: {
-    fontSize: 16,
+    fontSize: 18,
     paddingTop: 5,
     paddingLeft: 8,
+    paddingRight: 5,
   },
   button: {
     fontSize: 20,

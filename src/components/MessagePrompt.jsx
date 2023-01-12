@@ -19,7 +19,7 @@ export default function Popup(props) {
             name="close-circle-outline" 
             color="black" 
             size={40} 
-            style={{ right: -135, marginTop: 48 }}></Ionicons>
+            style={{ right: -155, marginTop: 48 }}></Ionicons>
             <View>
                 <Card containerStyle={{ marginBottom: 15, width: 225 }}>
                     <Card.Title>{props.prompt}</Card.Title>

@@ -34,16 +34,16 @@ const ImageSlider = (props) => {
       ) : (
         <Image
           style={[styles.swipepics, { marginRight: -180 }]}
-          source={{ uri: images[prevImage] }}
+          source={images[prevImage]}
         />
       )}
-      <Image style={styles.slideshowpics} source={{ uri: images[image] }} />
+      <Image style={styles.slideshowpics} source={images[image]} />
       {nextImage === length ? (
         <></>
       ) : (
         <Image
           style={[styles.swipepics, { marginLeft: -180 }]}
-          source={{ uri: images[nextImage] }}
+          source={images[nextImage]}
         />
       )}
       <Button
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   slideshowpics: {
     width: 300,
     height: 200,
-    resizeMode: "contain",
+    resizeMode: "cover",
     zIndex: 50,
     shadowColor: "#000",
     shadowOffset: { width: 1, height: 1 },
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
   swipepics: {
     width: 200,
     height: 150,
-    resizeMode: "contain",
+    resizeMode: "cover",
   },
   button: {
     fontSize: 20,

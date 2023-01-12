@@ -1,11 +1,17 @@
+import anikaprofile from "../../assets/anika_profile.jpeg";
+import anika1 from "../../assets/anika1.jpeg";
+import anika2 from "../../assets/anika2.jpeg";
+import chaprofile from "../../assets/cha_profile.jpeg";
+import cha1 from "../../assets/cha2.jpeg";
+import cha3 from "../../assets/cha3.jpg";
+import cha4 from "../../assets/cha4.jpeg";
+import jeffprofile from "../../assets/jeff_profile.jpeg";
+import jeff1 from "../../assets/jeff1.jpeg";
+import jeff2 from "../../assets/jeff2.png";
+
 export const ChaChaData = {
-  profileImg: "https://i.ytimg.com/vi/JKx_Sa7CFMY/maxresdefault.jpg",
-  images: [
-    "https://preview.redd.it/305c931xnuoy.jpg?auto=webp&s=d0c150557e1d6e7f07ee7b55182b97bafc520910",
-    "https://imgix.bustle.com/uploads/image/2021/6/28/5254176e-a263-4b24-8e02-43b2b5c4f43b-serena-cha-cha.jpeg?w=1200&h=630&fit=crop&crop=focalpoint&fm=jpg&fp-x=0.492&fp-y=0.1898",
-    "https://m.media-amazon.com/images/M/MV5BZjYwMjM1ZGItNjEzNi00ZjY2LWFkOGUtYjRjNDZlNDU4MTViXkEyXkFqcGdeQXVyMTIwODk1NTQ@._V1_.jpg",
-    "https://dab57h0r8ahff.cloudfront.net/540109/uploads/322fc250-d0b9-11eb-8d98-9ff75fe404f6_800_420.jpeg",
-  ],
+  profileImg: chaprofile,
+  images: [cha1, cha3, cha4],
   prompts: [
     [
       "My shower thoughts are...",
@@ -17,27 +23,39 @@ export const ChaChaData = {
   age: 27,
   gender: "Woman",
   location: "Providence, RI",
+  compatible: "65",
+};
+
+export const AnikaData = {
+  profileImg: anikaprofile,
+  images: [anika1, anika2],
+  prompts: [
+    ["The biggest red flag I avoid is...", "Men who are software engineers."],
+    [
+      "My perfect date would be...",
+      "A movie and a five star restaurant, with you paying of course! ",
+    ],
+  ],
+  name: "Anika Ahlualia",
+  age: 21,
+  gender: "Woman",
+  location: "Providence, RI",
   compatible: "99",
 };
 
-export const AnotherUser = {
-  profileImg: "https://i.ytimg.com/vi/JKx_Sa7CFMY/maxresdefault.jpg",
-  images: [
-    "https://preview.redd.it/305c931xnuoy.jpg?auto=webp&s=d0c150557e1d6e7f07ee7b55182b97bafc520910",
-    "https://imgix.bustle.com/uploads/image/2021/6/28/5254176e-a263-4b24-8e02-43b2b5c4f43b-serena-cha-cha.jpeg?w=1200&h=630&fit=crop&crop=focalpoint&fm=jpg&fp-x=0.492&fp-y=0.1898",
-    "https://m.media-amazon.com/images/M/MV5BZjYwMjM1ZGItNjEzNi00ZjY2LWFkOGUtYjRjNDZlNDU4MTViXkEyXkFqcGdeQXVyMTIwODk1NTQ@._V1_.jpg",
-    "https://dab57h0r8ahff.cloudfront.net/540109/uploads/322fc250-d0b9-11eb-8d98-9ff75fe404f6_800_420.jpeg",
-  ],
+export const JeffData = {
+  profileImg: jeffprofile,
+  images: [jeff1, jeff2],
   prompts: [
+    ["I enjoy...", "Long walks on the beach, beautiful sunsets, and you ;)"],
     [
-      "My shower thoughts are...",
-      "In the worm world, the early worm gets eaten :P",
+      "One of my secret passions in life is...",
+      "Building personalized systems based on user behavior data! These systems are applied to attention, mobile, user experience, and health. Tehe",
     ],
-    ["My friends would say I am...", "A silly goose! LOL HONK HONK"],
   ],
-  name: "Another User",
-  age: 69,
-  gender: "Woman",
-  location: "New York, NY",
-  compatible: "99",
+  name: "Jeff Huang",
+  age: 25,
+  gender: "Man",
+  location: "Providence, RI",
+  compatible: "80",
 };
