@@ -1,10 +1,14 @@
 import { React, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { View } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Matches from "./src/views/Matches";
 import Profile from "./src/views/Profile";
 import Settings from "./src/views/Settings";
+import CoupleProfile from "./src/views/CoupleProfile";
+import AMatch from "./src/views/AMatch";
+import Messaging from "./src/views/Messaging";
 
 const Tab = createBottomTabNavigator();
 
@@ -31,7 +35,7 @@ export default function App() {
             },
             tabBarActiveTintColor: "black",
             tabBarInactiveTintColor: "gray",
-            tabBarActiveBackgroundColor: "#53ABBB",
+            tabBarActiveBackgroundColor: "#65D9D5",
             tabBarInactiveBackgroundColor: "#65D9D5",
             headerShown: false,
           })}

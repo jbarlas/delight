@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import ImageSlider from "../components/imageSlider";
 import PromptSlider from "../components/promptSlider";
-import { ChaChaData, AnotherUser } from "../components/UserData";
+import { ChaChaData} from "../components/UserData";
 import {
   StyleSheet,
   Text,
@@ -98,14 +98,14 @@ function ProfilePage({ route, navigation }) {
               <Text style={styles.pictext}>Gallery</Text>
               <Ionicons name="add" size={28} />
             </View>
-            <ImageSlider images={ChaChaData.images} />
+            <ImageSlider images={ChaChaData.images} isProfile={true}/>
           </View>
           <View style={styles.picslide}>
             <View style={styles.add}>
               <Text style={styles.pictext}>Prompts</Text>
               <Ionicons name="add" size={28} />
             </View>
-            <PromptSlider prompts={ChaChaData.prompts} />
+            <PromptSlider prompts={ChaChaData.prompts} isProfile={true} />
           </View>
         </View>
       </ScrollView>

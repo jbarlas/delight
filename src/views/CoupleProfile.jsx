@@ -45,9 +45,9 @@ export default function CoupleProfile() {
                             backgroundColor={"black"}
                         ></Ionicons>
                     </Pressable>
-                    <Image source={AnikaData.profile} style={styles.profilepic}></Image>
+                    <Image source={AnikaData.profileImg} style={styles.profilepic}></Image>
                     <Image
-                        source={ChaChaData.profile}
+                        source={ChaChaData.profileImg}
                         style={[styles.profilepic, { marginLeft: -30 }]}
                     ></Image>
                     <View style={styles.name}>
@@ -103,14 +103,14 @@ export default function CoupleProfile() {
                     <View style={styles.picslide}>
                         <View style={styles.add}>
                             <Text style={styles.pictext}>Gallery</Text>
-                            <Ionicons name="add" size={25} />
+                            <Ionicons name="add" size={28} />
                         </View>
                         <ImageSlider images={[...ChaChaData.images, ...AnikaData.images]} />
                     </View>
                     <View style={styles.picslide}>
                         <View style={styles.add}>
                             <Text style={styles.pictext}>Where it all started</Text>
-                            <Ionicons name="add" size={25} />
+                            <Ionicons name="add" size={28} />
                         </View>
                         <PromptSlider
                             prompts={[...AnikaData.prompts, ...ChaChaData.prompts]}
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
     },
     infobar: {
         flex: 0.2,
-        marginLeft: "6.5%",
+        marginLeft: "5.5%",
         marginRight: "8%",
         flexDirection: "row",
         alignItems: "center",
@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
     common: {
         flex: 1,
         justifyContent: "space-around",
-        marginLeft: "8%",
+        marginLeft: "7%",
         marginRight: "8%",
     },
     heartcon: {
@@ -207,13 +207,13 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
     },
     add: {
-        paddingLeft: "8%",
+        paddingLeft: "7%",
         paddingRight: "15%",
         direction: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
-        marginBottom: -2,
-        paddingBottom: 5,
+        paddingBottom: 10,
+        paddingTop: 15,
     },
     text: {
         textAlign: "center",

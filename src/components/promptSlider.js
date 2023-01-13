@@ -23,8 +23,8 @@ const PromptSlider = (props) => {
   };
 
   const handlePress = () => {
-    if (prompt == 0) {
-      props.reactFn();
+    if (!props.isProfile) {
+      props.reactFn(prompt);
     }
   };
 

@@ -1,5 +1,6 @@
 import { React } from "react";
 import { StyleSheet, Text, SafeAreaView, Image, View } from "react-native";
+import anikaprofile from "../../assets/anika_profile.jpeg";
 
 export default function AMatch() {
   return (
@@ -8,7 +9,7 @@ export default function AMatch() {
       <View style={styles.info}>
         <Image
           style={styles.profilepic}
-          source={require("../assets/anika_profile.jpeg")}
+          source={anikaprofile}
         ></Image>
         <Text style={styles.name}>Anika Ahlualia</Text>
         <Text style={styles.comp}>99% Compatible</Text>
@@ -28,12 +29,12 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
   },
   profilepic: {
-    height: 160,
-    width: 160,
+    height: 180,
+    width: 180,
     borderRadius: 100,
   },
   info: {
-    flex: 0.45,
+    flex: 0.5,
     backgroundColor: "#F5D9E5",
     alignItems: "center",
     justifyContent: "space-around",
@@ -45,13 +46,16 @@ const styles = StyleSheet.create({
     paddingTop: 30,
   },
   name: {
-    fontSize: 20,
+    paddingTop: 10,
+    paddingBottom: 10,
+    fontSize: 30,
     fontWeight: "bold",
   },
   comp: {
-    fontSize: 15,
+    fontSize: 20,
   },
   blerb: {
+    fontSize: 15,
     marginLeft: 35,
     marginRight: 35,
     textAlign: "center",

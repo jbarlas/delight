@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import { Image, View, StyleSheet, Button } from "react-native";
+import { Image, View, StyleSheet, Button, Pressable } from "react-native";
 
 const ImageSlider = (props) => {
   const images = props.images;
@@ -22,6 +22,12 @@ const ImageSlider = (props) => {
     }
   };
 
+  const handlePress = () => {
+    if (!props.isProfile) {
+      props.reactFn(image);
+    }
+  };
+
   return (
     <View style={styles.slideshow}>
       <Button
@@ -37,7 +43,9 @@ const ImageSlider = (props) => {
           source={images[prevImage]}
         />
       )}
-      <Image style={styles.slideshowpics} source={images[image]} />
+      <Pressable onPress={handlePress} style={{ height: "100%", zIndex: 50 }}>
+        <Image style={styles.slideshowpics} source={images[image]} />
+      </Pressable>
       {nextImage === length ? (
         <></>
       ) : (

@@ -40,12 +40,31 @@ function ProfilePage({ route, navigation }) {
   const [matched, setMatched] = useState(route.params.matched);
   const [confirmationVisible, setConfirmationVisible] = useState(false);
   const [msgVisible, isMsgVisible] = useState(false);
+  const [reactedPromp, setReactedPrompt] = useState(0);
+  const [reactedImage, setReactedImage] = useState(0);
+  const [isPrompt, setIsPrompt] = useState(false);
 
   const toggleMatched = () => {
     setMatched(!matched);
 
     // this does nothing but we need to do something like this i think
     navigation.setOptions("Root", { matched: !matched });
+  };
+
+  const handleConfirmPress = () => {
+    setConfirmationVisible(!confirmationVisible);
+  };
+
+  const handleReactFN = (prompt) => {
+    isMsgVisible(!msgVisible);
+    setReactedPrompt(prompt);
+    setIsPrompt(true);
+  };
+
+  const handleReactFNImage = (prompt) => {
+    isMsgVisible(!msgVisible);
+    setReactedImage(prompt);
+    setIsPrompt(false);
   };
 
   const reactionText = (
@@ -80,6 +99,7 @@ function ProfilePage({ route, navigation }) {
               backgroundColor={"black"}
               style={styles.xbutton}
             ></Ionicons>
+            <View style={styles.whiteX} />
           </TouchableOpacity>
           <Image source={userData.profileImg} style={styles.profilepic}></Image>
           <View style={styles.name}>
@@ -128,13 +148,18 @@ function ProfilePage({ route, navigation }) {
         <View style={styles.slideshows}>
           <View style={styles.picslide}>
             <Text style={styles.pictext}>Gallery</Text>
-            <ImageSlider images={userData.images} />
+            <ImageSlider
+              images={userData.images}
+              reactFn={handleReactFNImage}
+              isProfile={false}
+            />
           </View>
           <View style={styles.picslide}>
             <Text style={styles.pictext}>Prompts</Text>
             <PromptSlider
               prompts={userData.prompts}
-              reactFn={() => isMsgVisible(!msgVisible)}
+              reactFn={handleReactFN}
+              isProfile={false}
             />
           </View>
         </View>
@@ -150,14 +175,16 @@ function ProfilePage({ route, navigation }) {
           <MessagePrompt
             isMsgVisible={isMsgVisible}
             setUnmatchVisible={setConfirmationVisible}
-            prompt={userData.prompts[0][0]}
-            answer={userData.prompts[0][1]}
+            prompt={userData.prompts[reactedPromp][0]}
+            answer={userData.prompts[reactedPromp][1]}
+            isAPrompt={isPrompt}
+            image={userData.images[reactedImage]}
           />
         </Modal>
 
         <Popup
           isVisible={confirmationVisible}
-          handlePress={() => setConfirmationVisible(!confirmationVisible)}
+          handlePress={handleConfirmPress}
           options={["Confirm"]}
           text={reactionText}
         ></Popup>
@@ -177,6 +204,16 @@ const styles = StyleSheet.create({
     width: 45,
     top: -50,
     left: 330,
+    zIndex: 20
+  },
+  whiteX: {
+    position: "absolute",
+    height: 30,
+    width: 30,
+    backgroundColor: "white",
+    top: -45,
+    left: 333,
+    borderRadius: 50
   },
   top: {
     backgroundColor: "#65D9D5",

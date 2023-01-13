@@ -14,10 +14,10 @@ export default function Messaging() {
                         style={styles.profilepic}
                     ></Image>
                     <View style={styles.name}>
-                        <Text style={{ fontSize: 22, fontWeight: "bold" }}>
+                        <Text style={{ fontSize: 26, fontWeight: "bold" }}>
                             Anika Ahluwalia
                         </Text>
-                        <Text style={{ fontSize: 16, paddingTop: 5 }}>
+                        <Text style={{ fontSize: 18, paddingTop: 5 }}>
                             99% Compatible!
                         </Text>
                     </View>
@@ -86,8 +86,8 @@ const styles = StyleSheet.create({
     },
     profilepic: {
         marginLeft: "7%",
-        height: 80,
-        width: 80,
+        height: 90,
+        width: 90,
         borderRadius: 50,
     },
     name: {
