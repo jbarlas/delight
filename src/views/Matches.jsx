@@ -29,6 +29,7 @@ export default function Profile({ route }) {
         initialParams={{
           userData: JeffData,
           matched: route.params.matched,
+          setMatched: route.params.setMatched
         }}
       />
     </Stack.Navigator>
@@ -46,9 +47,9 @@ function ProfilePage({ route, navigation }) {
 
   const toggleMatched = () => {
     setMatched(!matched);
+    // route.params.setMatched()
 
     // this does nothing but we need to do something like this i think
-    navigation.setOptions("Root", { matched: !matched });
   };
 
   const handleConfirmPress = () => {

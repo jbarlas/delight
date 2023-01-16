@@ -10,7 +10,6 @@ import {
 import { Card, Button as IconButton } from "@rneui/themed";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { patchWebProps } from "@rneui/base";
-import jeff1 from "../../assets/jeff1.jpeg";
 
 export default function Popup(props) {
   const handleReactionSent = () => {
