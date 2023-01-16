@@ -17,6 +17,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { createStackNavigator } from "@react-navigation/stack";
 import Popup from "../components/Popup.jsx";
 import MessagePrompt from "../components/MessagePrompt.jsx";
+import AMatch from "./AMatch";
 
 const Stack = createStackNavigator();
 
@@ -29,9 +30,13 @@ export default function Profile({ route }) {
         initialParams={{
           userData: JeffData,
           matched: route.params.matched,
-          setMatched: route.params.setMatched
+          setMatched: route.params.setMatched,
         }}
       />
+      <Stack.Screen
+          name="AMatch"
+          component={AMatch}
+        />
     </Stack.Navigator>
   );
 }
@@ -47,13 +52,17 @@ function ProfilePage({ route, navigation }) {
 
   const toggleMatched = () => {
     setMatched(!matched);
-    // route.params.setMatched()
+    route.params.setMatched()
 
     // this does nothing but we need to do something like this i think
   };
 
   const handleConfirmPress = () => {
     setConfirmationVisible(!confirmationVisible);
+    if (userData === AnikaData) {
+      navigation.navigate("AMatch")
+      toggleMatched();
+    }
   };
 
   const handleReactFN = (prompt) => {
@@ -189,7 +198,7 @@ function ProfilePage({ route, navigation }) {
           options={["Confirm"]}
           text={reactionText}
         ></Popup>
-        <View style={{height:80, width:"100%"}}></View>
+        <View style={{ height: 80, width: "100%" }}></View>
       </ScrollView>
     </View>
   );
@@ -206,7 +215,7 @@ const styles = StyleSheet.create({
     width: 45,
     top: -50,
     left: 330,
-    zIndex: 20
+    zIndex: 20,
   },
   whiteX: {
     position: "absolute",
@@ -215,7 +224,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     top: -45,
     left: 333,
-    borderRadius: 50
+    borderRadius: 50,
   },
   top: {
     backgroundColor: "#65D9D5",

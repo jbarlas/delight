@@ -7,16 +7,15 @@ import Matches from "./src/views/Matches";
 import Profile from "./src/views/Profile";
 import Settings from "./src/views/Settings";
 import CoupleProfile from "./src/views/CoupleProfile";
-import AMatch from "./src/views/AMatch";
 import Messaging from "./src/views/Messaging";
 
 const Tab = createBottomTabNavigator();
 
 export default function App() {
   const [matched, setMatched] = useState(false);
-  // const onPressFunc = () => {
-  //   setMatched((matched) => !matched);
-  // };
+  const onPressFunc = () => {
+    setMatched((matched) => !matched);
+  };
 
   const CustomButton = ({ children, onPress }) => (
     <TouchableWithoutFeedback onPress={onPress}>
@@ -98,9 +97,8 @@ export default function App() {
               tabBarButton: (props) => <CustomButton {...props} />,
             }}
             component={matched ? Messaging : Matches}
-            initialParams={{ matched: matched }}
-            tabBarIcon
-            // initialParams={{ setMatched: onPressFunc }}
+            // initialParams={{ matched: matched }}
+            initialParams={{ setMatched: onPressFunc }}
           />
           <Tab.Screen
             name="Settings"
