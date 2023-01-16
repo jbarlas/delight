@@ -34,7 +34,7 @@ function SettingsPage({ route, navigation }) {
         </View>
       </View>
       {settingsData.map((item) =>
-        <View style={styles.row}>
+        <View key ={item.iconName} style={styles.row}>
           <View style={styles.mainContent}>
             <Ionicons name={item.iconName} color={matched ? "#DC8EAE" : "#53ABBB"} size={40}></Ionicons>
             <Text style={styles.itemText}>{item.text}</Text>
