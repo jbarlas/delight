@@ -117,6 +117,7 @@ export default function CoupleProfile() {
                         />
                     </View>
                 </View>
+                <View style={{height:80, width:"100%"}}></View>
             </ScrollView>
             <Popup isVisible={unmatchVisible} handlePress={handleUnmatching} options={['Yes', 'No']} text={unmatchText}></Popup>
         </View>

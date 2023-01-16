@@ -62,7 +62,6 @@ export default function Messaging() {
                 </View>
 
             </KeyboardAvoidingView>
-
         </KeyboardAvoidingView>
     );
 }

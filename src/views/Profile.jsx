@@ -108,6 +108,7 @@ function ProfilePage({ route, navigation }) {
             <PromptSlider prompts={ChaChaData.prompts} isProfile={true} />
           </View>
         </View>
+        <View style={{height:80, width:"100%"}}></View>
       </ScrollView>
     </View>
   );

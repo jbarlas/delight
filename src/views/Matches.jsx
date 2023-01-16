@@ -189,6 +189,7 @@ function ProfilePage({ route, navigation }) {
           options={["Confirm"]}
           text={reactionText}
         ></Popup>
+        <View style={{height:80, width:"100%"}}></View>
       </ScrollView>
     </View>
   );
