@@ -146,6 +146,7 @@ function MatchProfile({ route, navigation }) {
               images={userData.images}
               reactFn={handleReactFNImage}
               isProfile={false}
+              color={"#65D9D5"}
             />
           </View>
           <View style={styles.picslide}>
@@ -154,6 +155,7 @@ function MatchProfile({ route, navigation }) {
               prompts={userData.prompts}
               reactFn={handleReactFN}
               isProfile={false}
+              color={"#65D9D5"}
             />
           </View>
         </View>

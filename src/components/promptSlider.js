@@ -1,7 +1,9 @@
 import { React, useState } from "react";
 import { View, StyleSheet, Button, Text, Pressable } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const PromptSlider = (props) => {
+  const color = props.color;
   const prompts = props.prompts;
   const length = prompts.length;
   const [prompt, setPrompt] = useState(0);
@@ -30,15 +32,17 @@ const PromptSlider = (props) => {
 
   return (
     <View style={styles.slideshow}>
-      <Button
-        title="<"
-        onPress={prevArrow}
-        disabled={prompt === 0 ? true : false}
-      />
+      <Pressable onPress={prevArrow} style={styles.menuLeft}>
+        <MaterialCommunityIcons
+          name="chevron-left"
+          size={40}
+          color={prevPrompt === -1 ? "lightgrey" : color}
+        />
+      </Pressable>
       {prevPrompt === -1 ? (
-        <></>
+        <View style={[styles.swipepics, { marginRight: -185, opacity: 0 }]} />
       ) : (
-        <View style={[styles.swipepics, { marginRight: -180 }]} />
+        <View style={[styles.swipepics, { marginRight: -185 }]} />
       )}
 
       <View style={styles.slideshowpics}>
@@ -49,15 +53,17 @@ const PromptSlider = (props) => {
       </View>
 
       {nextPrompt === length ? (
-        <></>
+        <View style={[styles.swipepics, { marginLeft: -185, opacity: 0 }]} />
       ) : (
-        <View style={[styles.swipepics, { marginLeft: -180 }]} />
+        <View style={[styles.swipepics, { marginLeft: -185 }]} />
       )}
-      <Button
-        title=">"
-        onPress={nextArrow}
-        disabled={prompt === length - 1 ? true : false}
-      />
+      <Pressable onPress={nextArrow} style={styles.menuRight}>
+        <MaterialCommunityIcons
+          name="chevron-right"
+          size={40}
+          color={nextPrompt === length ? "lightgrey" : color}
+        />
+      </Pressable>
     </View>
   );
 };
@@ -67,7 +73,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "center",
   },
   slideshowpics: {
     width: 300,
@@ -85,18 +91,24 @@ const styles = StyleSheet.create({
     height: 150,
     backgroundColor: "#F0F2F6",
   },
+  menuLeft: {
+    marginRight: -10,
+  },
+  menuRight: {
+    marginLeft: -10,
+  },
   prompthead: {
     fontSize: 20,
     paddingTop: 5,
-    paddingLeft: 8,
-    paddingRight: 5,
+    marginLeft: 10,
+    marginRight: 10,
     fontWeight: "bold",
   },
   promptbody: {
     fontSize: 18,
     paddingTop: 5,
-    paddingLeft: 8,
-    paddingRight: 5,
+    marginLeft: 10,
+    marginRight: 10,
   },
   button: {
     fontSize: 20,

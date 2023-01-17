@@ -105,7 +105,7 @@ export default function CoupleProfile({ navigation, route }) {
                             <Text style={styles.pictext}>Gallery</Text>
                             <MaterialCommunityIcons name="plus" size={28} />
                         </View>
-                        <ImageSlider images={[...ChaChaData.images, ...AnikaData.images]} isProfile={true}/>
+                        <ImageSlider images={[...ChaChaData.images, ...AnikaData.images]} isProfile={true} color={"#F6BCD4"}/>
                     </View>
                     <View style={styles.picslide}>
                         <View style={styles.add}>
@@ -113,7 +113,7 @@ export default function CoupleProfile({ navigation, route }) {
                             <MaterialCommunityIcons name="plus" size={28} />
                         </View>
                         <PromptSlider
-                            prompts={[...AnikaData.prompts, ...ChaChaData.prompts] } isProfile={true}
+                            prompts={[...AnikaData.prompts, ...ChaChaData.prompts] } isProfile={true} color={"#F6BCD4"}
                         />
                     </View>
                 </View>
@@ -209,7 +209,7 @@ const styles = StyleSheet.create({
     },
     add: {
         paddingLeft: "7%",
-        paddingRight: "15%",
+        paddingRight: "10%",
         direction: "flex",
         flexDirection: "row",
         justifyContent: "space-between",

@@ -5,12 +5,11 @@ import {
   SafeAreaView,
   Image,
   View,
-  Button,
+  TouchableHighlight
 } from "react-native";
 import anikaprofile from "../../assets/anika_profile.jpeg";
 import chaprofile from "../../assets/cha_profile.jpeg";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { JeffData } from "../components/UserData";
 
 export default function Unmatch({ navigation }) {
   return (
@@ -21,22 +20,29 @@ export default function Unmatch({ navigation }) {
           <Text style={styles.subTitle}>Sorry it didn't work out /:</Text>
         </View>
         <View style={styles.pictures}>
-          <Image style={[styles.profilepic, {marginRight: -40, opacity: .4}]} source={anikaprofile}></Image>
+          <Image style={[styles.profilepic, {marginRight: -50, opacity: .4}]} source={anikaprofile}></Image>
           <MaterialCommunityIcons
                             name="heart-broken"
                             size={100}
                             color={"black"}
                             style={{zIndex: 10}}
                         ></MaterialCommunityIcons>
-          <Image style={[styles.profilepic, {marginLeft: -40}]} source={chaprofile}></Image>
+          <Image style={[styles.profilepic, {marginLeft: -50}]} source={chaprofile}></Image>
         </View>
         <Text style={styles.blerb} numberOfLines={2}>
           We hope your next match will be the one for you!
         </Text>
-        <Button
-          title="Back to matching"
+        <TouchableHighlight
+          activeOpacity={0.4}
+          underlayColor="#3e808c"
+          style={styles.button}
           onPress={() => navigation.navigate("Home-Unmatched")}
-        ></Button>
+        >
+          <View style={styles.buttonView}>
+            <MaterialCommunityIcons name="heart" size={40} color={"#65D9D5"} />
+            <Text style={styles.buttonText}>Go back to matching</Text>
+          </View>
+        </TouchableHighlight>
       </SafeAreaView>
     </>
   );
@@ -53,6 +59,8 @@ const styles = StyleSheet.create({
     height: 150,
     width: 150,
     borderRadius: 100,
+    borderWidth: 6,
+    borderColor: "#53ABBB"
   },
   info: {
     flex: 0.2,
@@ -98,4 +106,20 @@ const styles = StyleSheet.create({
     textAlign: "center",
     paddingBottom: 10,
   },
+  button: {
+    heigh: 100,
+    width: "75%",
+    backgroundColor: "#53ABBB",
+    borderRadius: 30
+  },
+  buttonView: {
+    flexDirection: "row",
+    alignItems: "center",
+    padding: 10
+  },
+  buttonText: {
+    paddingLeft: "3%",
+    fontSize: 22,
+    fontWeight: "bold"
+  }
 });

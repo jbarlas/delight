@@ -1,6 +1,7 @@
 import { React } from "react";
-import { StyleSheet, Text, SafeAreaView, Image, View, Button } from "react-native";
+import { StyleSheet, Text, SafeAreaView, Image, View, TouchableHighlight} from "react-native";
 import anikaprofile from "../../assets/anika_profile.jpeg";
+import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 
 export default function AMatch({navigation}) {
   return (
@@ -17,7 +18,17 @@ export default function AMatch({navigation}) {
       <Text style={styles.blerb} numberOfLines={2}>
         You are now in match mode and can only communicate with Anika!
       </Text>
-      <Button title="Go to messaging" onPress={() => navigation.navigate("Home-Matched")}></Button>
+      <TouchableHighlight
+          activeOpacity={0.4}
+          underlayColor="#b3728d"
+          style={styles.button}
+          onPress={() => navigation.navigate("Home-Matched")}
+        >
+          <View style={styles.buttonView}>
+            <Ionicons name="chatbox-ellipses" size={40} color={"#F5D9E5"} />
+            <Text style={styles.buttonText}>Message Anika</Text>
+          </View>
+        </TouchableHighlight>
     </SafeAreaView>
   );
 }
@@ -33,6 +44,8 @@ const styles = StyleSheet.create({
     height: 180,
     width: 180,
     borderRadius: 100,
+    borderWidth: 6,
+    borderColor: "#DC8EAE",
   },
   info: {
     flex: 0.5,
@@ -62,4 +75,20 @@ const styles = StyleSheet.create({
     textAlign: "center",
     paddingBottom: 80,
   },
+  button: {
+    heigh: 100,
+    width: "75%",
+    backgroundColor: "#DC8EAE",
+    borderRadius: 30
+  },
+  buttonView: {
+    flexDirection: "row",
+    alignItems: "center",
+    padding: 10
+  },
+  buttonText: {
+    paddingLeft: "10%",
+    fontSize: 22,
+    fontWeight: "bold"
+  }
 });

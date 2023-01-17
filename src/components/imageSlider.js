@@ -1,7 +1,9 @@
 import { React, useState } from "react";
 import { Image, View, StyleSheet, Button, Pressable } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const ImageSlider = (props) => {
+  const color = props.color;
   const images = props.images;
   const length = images.length;
   const [image, setImage] = useState(0);
@@ -30,35 +32,47 @@ const ImageSlider = (props) => {
 
   return (
     <View style={styles.slideshow}>
-      <Button
-        title="<"
-        onPress={prevArrow}
-        disabled={image === 0 ? true : false}
-      />
+      <Pressable onPress={prevArrow} style={styles.menuLeft}>
+        <MaterialCommunityIcons
+          name="chevron-left"
+          size={40}
+          color={prevImage === -1 ? "lightgrey" : color}
+        />
+      </Pressable>
       {prevImage === -1 ? (
-        <></>
+        <Image
+          style={[styles.swipepics, { marginRight: -185, opacity: 0 }]}
+          source={images[prevImage]}
+        />
       ) : (
         <Image
-          style={[styles.swipepics, { marginRight: -180 }]}
+          style={[styles.swipepics, { marginRight: -185 }]}
           source={images[prevImage]}
         />
       )}
-      <Pressable onPress={handlePress} style={{ height: "100%", zIndex: 50 }}>
-        <Image style={styles.slideshowpics} source={images[image]} />
-      </Pressable>
+      <View style={styles.slideshowpics}>
+        <Pressable onPress={handlePress} style={{ height: "100%", zIndex: 10 }}>
+          <Image style={styles.slideshowpics} source={images[image]} />
+        </Pressable>
+      </View>
       {nextImage === length ? (
-        <></>
+        <Image
+          style={[styles.swipepics, { marginLeft: -185, opacity: 0 }]}
+          source={images[nextImage]}
+        />
       ) : (
         <Image
-          style={[styles.swipepics, { marginLeft: -180 }]}
+          style={[styles.swipepics, { marginLeft: -185 }]}
           source={images[nextImage]}
         />
       )}
-      <Button
-        title=">"
-        onPress={nextArrow}
-        disabled={image === length - 1 ? true : false}
-      />
+      <Pressable onPress={nextArrow} style={styles.menuRight}>
+        <MaterialCommunityIcons
+          name="chevron-right"
+          size={40}
+          color={nextImage === length ? "lightgrey" : color}
+        />
+      </Pressable>
     </View>
   );
 };
@@ -68,7 +82,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "center",
   },
   slideshowpics: {
     width: 300,
@@ -80,6 +94,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.8,
     shadowRadius: 2,
     elevation: 5,
+  },
+  menuLeft: {
+    marginRight: -10,
+  },
+  menuRight: {
+    marginLeft: -10,
   },
   swipepics: {
     width: 200,

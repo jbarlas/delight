@@ -74,14 +74,14 @@ export default function Profile({ route }) {
               <Text style={styles.pictext}>Gallery</Text>
               <MaterialCommunityIcons name="plus" size={28} />
             </View>
-            <ImageSlider images={ChaChaData.images} isProfile={true}/>
+            <ImageSlider images={ChaChaData.images} isProfile={true} color={"#65D9D5"}/>
           </View>
           <View style={styles.picslide}>
             <View style={styles.add}>
               <Text style={styles.pictext}>Prompts</Text>
               <MaterialCommunityIcons name="plus" size={28} />
             </View>
-            <PromptSlider prompts={ChaChaData.prompts} isProfile={true} />
+            <PromptSlider prompts={ChaChaData.prompts} isProfile={true} color={"#65D9D5"}/>
           </View>
         </View>
         <View style={{height:80, width:"100%"}}></View>
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
   },
   add: {
     paddingLeft: "7%",
-    paddingRight: "15%",
+    paddingRight: "10%",
     direction: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
