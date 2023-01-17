@@ -97,8 +97,8 @@ export default function App() {
               tabBarButton: (props) => <CustomButton {...props} />,
             }}
             component={matched ? Messaging : Matches}
-            // initialParams={{ matched: matched }}
-            initialParams={{ setMatched: onPressFunc }}
+            initialParams={{ matched: matched }}
+            // initialParams={{ setMatched: onPressFunc }}
           />
           <Tab.Screen
             name="Settings"

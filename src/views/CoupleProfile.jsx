@@ -105,7 +105,7 @@ export default function CoupleProfile() {
                             <Text style={styles.pictext}>Gallery</Text>
                             <Ionicons name="add" size={28} />
                         </View>
-                        <ImageSlider images={[...ChaChaData.images, ...AnikaData.images]} />
+                        <ImageSlider images={[...ChaChaData.images, ...AnikaData.images]} isProfile={true}/>
                     </View>
                     <View style={styles.picslide}>
                         <View style={styles.add}>
@@ -113,7 +113,7 @@ export default function CoupleProfile() {
                             <Ionicons name="add" size={28} />
                         </View>
                         <PromptSlider
-                            prompts={[...AnikaData.prompts, ...ChaChaData.prompts]}
+                            prompts={[...AnikaData.prompts, ...ChaChaData.prompts] } isProfile={true}
                         />
                     </View>
                 </View>

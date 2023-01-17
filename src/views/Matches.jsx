@@ -52,7 +52,7 @@ function ProfilePage({ route, navigation }) {
 
   const toggleMatched = () => {
     setMatched(!matched);
-    route.params.setMatched()
+    // route.params.setMatched()
 
     // this does nothing but we need to do something like this i think
   };
@@ -61,7 +61,7 @@ function ProfilePage({ route, navigation }) {
     setConfirmationVisible(!confirmationVisible);
     if (userData === AnikaData) {
       navigation.navigate("AMatch")
-      toggleMatched();
+      // toggleMatched();
     }
   };
 

@@ -6,6 +6,7 @@ import AnikaProfile from "../../assets/anika_profile.jpeg"
 
 export default function Messaging() {
     return (
+        <View style={{flex: 1, backgroundColor: "white"}}>
         <KeyboardAvoidingView style={styles.container}>
             <View style={styles.top}>
                 <SafeAreaView style={styles.topinfo}>
@@ -62,7 +63,10 @@ export default function Messaging() {
                 </View>
 
             </KeyboardAvoidingView>
+            
         </KeyboardAvoidingView>
+        <View style={{height:50, width:"100%"}}></View>
+        </View>
     );
 }
 
@@ -98,6 +102,7 @@ const styles = StyleSheet.create({
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
+        marginBottom: 50
     },
     input: {
         borderWidth: 1,
