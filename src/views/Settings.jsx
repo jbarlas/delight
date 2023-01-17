@@ -6,21 +6,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 const Stack = createStackNavigator();
 
-// export default function Profile({ route }) {
-//   return (
-//     <Stack.Navigator screenOptions={{ headerShown: false }}>
-//       <Stack.Screen
-//         name="user"
-//         component={SettingsPage}
-//         initialParams={{
-//           matched: route.params.matched,
-//         }}
-//       />
-//     </Stack.Navigator>
-//   );
-// }
-
-export default function SettingsPage({ route, navigation }) {
+export default function SettingsPage({ route }) {
   const matched = route.params.matched;
   return (
     <View style={styles.container}>

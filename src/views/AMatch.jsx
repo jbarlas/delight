@@ -17,7 +17,7 @@ export default function AMatch({navigation}) {
       <Text style={styles.blerb} numberOfLines={2}>
         You are now in match mode and can only communicate with Anika!
       </Text>
-      <Button title="View match" onPress={() => navigation.navigate("Home")}></Button>
+      <Button title="Go to messaging" onPress={() => navigation.navigate("Home-Matched")}></Button>
     </SafeAreaView>
   );
 }

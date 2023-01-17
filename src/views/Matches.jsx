@@ -19,50 +19,33 @@ import MessagePrompt from "../components/MessagePrompt.jsx";
 
 const Stack = createStackNavigator();
 
-export default function Profile({ route }) {
+export default function Matches() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen
         name="user"
-        component={ProfilePage}
+        component={MatchProfile}
         initialParams={{
-          userData: JeffData,
-          matched: route.params.matched,
-          setMatched: route.params.setMatched,
+          userData: JeffData
         }}
       />
-      {/* <Stack.Screen
-          name="AMatch"
-          component={AMatch}
-        /> */}
     </Stack.Navigator>
   );
 }
 
-function ProfilePage({ route, navigation }) {
+function MatchProfile({ route, navigation }) {
   const userData = route.params.userData;
-  // const [matched, setMatched] = useState(route.params.matched);
-  const matched = route.params.matched
-  const setMatched = route.params.setMatched
   const [confirmationVisible, setConfirmationVisible] = useState(false);
   const [msgVisible, isMsgVisible] = useState(false);
   const [reactedPromp, setReactedPrompt] = useState(0);
   const [reactedImage, setReactedImage] = useState(0);
   const [isPrompt, setIsPrompt] = useState(false);
 
-  const toggleMatched = () => {
-
-    navigation.navigate("AMatch", setMatched(true))
-    // route.params.setMatched()
-
-    // this does nothing but we need to do something like this i think
-  };
-
   const handleConfirmPress = () => {
     setConfirmationVisible(!confirmationVisible);
     if (userData === AnikaData) {
-      navigation.navigate("AMatch")
-      toggleMatched();
+      navigation.setParams({userData: JeffData})
+      navigation.navigate("Match")
     }
   };
 
@@ -92,7 +75,7 @@ function ProfilePage({ route, navigation }) {
       <View
         style={{
           ...styles.top,
-          backgroundColor: matched ? "#F6BCD4" : "#65D9D5",
+          backgroundColor: "#65D9D5",
         }}
       >
         <SafeAreaView style={styles.topinfo}>
@@ -174,7 +157,6 @@ function ProfilePage({ route, navigation }) {
             />
           </View>
         </View>
-        {/* <Button title="Toggle Match" onPress={toggleMatched}></Button> */}
         <Modal
           animationType="slide"
           transparent={true}

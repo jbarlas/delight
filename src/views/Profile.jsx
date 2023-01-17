@@ -1,7 +1,6 @@
 import { React, useState } from "react";
 import ImageSlider from "../components/imageSlider";
 import PromptSlider from "../components/promptSlider";
-import { ChaChaData} from "../components/UserData";
 import {
   StyleSheet,
   Text,
@@ -11,35 +10,12 @@ import {
   ScrollView,
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { createStackNavigator } from "@react-navigation/stack";
 
-const Stack = createStackNavigator();
+
 
 export default function Profile({ route }) {
-  return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen
-        name="user"
-        component={ProfilePage}
-        initialParams={{
-          userData: ChaChaData,
-          matched: route.params.matched,
-        }}
-      />
-    </Stack.Navigator>
-  );
-}
-
-function ProfilePage({ route, navigation }) {
   const ChaChaData = route.params.userData;
-  const [matched, setMatched] = useState(route.params.matched);
 
-  const toggleMatched = () => {
-    setMatched(!matched);
-
-    // this does nothing but we need to do something like this i think
-    navigation.navigate("CoupleProfile", { matched: !matched });
-  };
   return (
     <View style={styles.container}>
       <View style={styles.top}>

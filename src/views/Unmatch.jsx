@@ -10,8 +10,9 @@ import {
 import anikaprofile from "../../assets/anika_profile.jpeg";
 import chaprofile from "../../assets/cha_profile.jpeg";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { JeffData } from "../components/UserData";
 
-export default function Unmatch({ navigation, route }) {
+export default function Unmatch({ navigation }) {
   return (
     <>
       <SafeAreaView style={styles.container}>
@@ -34,7 +35,7 @@ export default function Unmatch({ navigation, route }) {
         </Text>
         <Button
           title="Back to matching"
-          onPress={() => navigation.navigate("Home")}
+          onPress={() => navigation.navigate("Home-Unmatched")}
         ></Button>
       </SafeAreaView>
     </>

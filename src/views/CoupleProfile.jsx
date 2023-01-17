@@ -20,8 +20,6 @@ export default function CoupleProfile({ navigation, route }) {
 
     const handleUnmatching = (value) => {
         if (value == 0) {
-            console.log("yes")
-            route.params.setMatched(false)
             navigation.navigate("Unmatch")
             setHasUnmatched(true)
         } else {
