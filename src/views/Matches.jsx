@@ -64,7 +64,7 @@ function ProfilePage({ route, navigation }) {
     setConfirmationVisible(!confirmationVisible);
     if (userData === AnikaData) {
       navigation.navigate("AMatch")
-      // toggleMatched();
+      toggleMatched();
     }
   };
 
@@ -176,7 +176,7 @@ function ProfilePage({ route, navigation }) {
             />
           </View>
         </View>
-        <Button title="Toggle Match" onPress={toggleMatched}></Button>
+        {/* <Button title="Toggle Match" onPress={toggleMatched}></Button> */}
         <Modal
           animationType="slide"
           transparent={true}

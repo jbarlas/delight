@@ -7,16 +7,15 @@ export default function Unmatch({navigation, route}) {
   return (
     <>
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>Oh no! Sorry it didn't work out</Text>
+      <Text style={styles.title}>Oh no! Sorry it didn't work out /:</Text>
       <View style={styles.info}>
         <Image
           style={styles.profilepic}
           source={anikaprofile}
         ></Image>
-        <Text style={styles.name}>Anika Ahlualia</Text>
       </View>
       <Text style={styles.blerb} numberOfLines={2}>
-        You are now in match mode and can only communicate with Anika!
+        We hope your next match will be the one for you!
       </Text>
       <Button title="Back to matches" onPress={() => navigation.navigate("Home")}></Button>
     </SafeAreaView>
@@ -35,6 +34,7 @@ const styles = StyleSheet.create({
       height: 180,
       width: 180,
       borderRadius: 100,
+      opacity: .2,
     },
     info: {
       flex: 0.5,
@@ -47,6 +47,8 @@ const styles = StyleSheet.create({
       fontSize: 50,
       fontWeight: "bold",
       paddingTop: 30,
+      textAlign: "center",
+      margin: 20
     },
     name: {
       paddingTop: 10,
