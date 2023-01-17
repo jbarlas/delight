@@ -1,69 +1,100 @@
-import React from 'react'
-import { StyleSheet, Text, SafeAreaView, Image, View, Button } from "react-native";
+import React from "react";
+import {
+  StyleSheet,
+  Text,
+  SafeAreaView,
+  Image,
+  View,
+  Button,
+} from "react-native";
 import anikaprofile from "../../assets/anika_profile.jpeg";
+import chaprofile from "../../assets/cha_profile.jpeg";
+import { Ionicons } from "@expo/vector-icons";
 
-
-export default function Unmatch({navigation, route}) {
+export default function Unmatch({ navigation, route }) {
   return (
     <>
-    <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>Oh no! Sorry it didn't work out /:</Text>
-      <View style={styles.info}>
-        <Image
-          style={styles.profilepic}
-          source={anikaprofile}
-        ></Image>
-      </View>
-      <Text style={styles.blerb} numberOfLines={2}>
-        We hope your next match will be the one for you!
-      </Text>
-      <Button title="Back to matches" onPress={() => navigation.navigate("Home")}></Button>
-    </SafeAreaView>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.info}>
+          <Text style={styles.title}>Oh no!</Text>
+          <Text style={styles.subTitle}>Sorry it didn't work out /:</Text>
+        </View>
+        <View style={styles.pictures}>
+          <Image style={[styles.profilepic, {marginRight: -60, opacity: .4}]} source={anikaprofile}></Image>
+          <Ionicons
+                            name="heart-dislike"
+                            size={80}
+                            color={"black"}
+                            style={{zIndex: 10}}
+                        ></Ionicons>
+          <Image style={[styles.profilepic, {marginLeft: -60}]} source={chaprofile}></Image>
+        </View>
+        <Text style={styles.blerb} numberOfLines={2}>
+          We hope your next match will be the one for you!
+        </Text>
+        <Button
+          title="Back to matching"
+          onPress={() => navigation.navigate("Home")}
+        ></Button>
+      </SafeAreaView>
     </>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: "#65D9D5",
-      alignItems: "center",
-      justifyContent: "space-around",
-    },
-    profilepic: {
-      height: 180,
-      width: 180,
-      borderRadius: 100,
-      opacity: .2,
-    },
-    info: {
-      flex: 0.5,
-      backgroundColor: "#65D9D5",
-      alignItems: "center",
-      justifyContent: "space-around",
-      paddingBottom: 30,
-    },
-    title: {
-      fontSize: 50,
-      fontWeight: "bold",
-      paddingTop: 30,
-      textAlign: "center",
-      margin: 20
-    },
-    name: {
-      paddingTop: 10,
-      paddingBottom: 10,
-      fontSize: 30,
-      fontWeight: "bold",
-    },
-    comp: {
-      fontSize: 20,
-    },
-    blerb: {
-      fontSize: 15,
-      marginLeft: 35,
-      marginRight: 35,
-      textAlign: "center",
-      paddingBottom: 80,
-    },
-  });
+  container: {
+    flex: 1,
+    backgroundColor: "#65D9D5",
+    alignItems: "center",
+    justifyContent: "space-around",
+  },
+  profilepic: {
+    height: 150,
+    width: 150,
+    borderRadius: 100,
+  },
+  info: {
+    flex: 0.2,
+    backgroundColor: "#65D9D5",
+    alignItems: "center",
+    justifyContent: "space-around",
+    paddingBottom: 30,
+  },
+  pictures : {
+    flex: 0.2,
+    flexDirection: "row",
+    backgroundColor: "#65D9D5",
+    alignItems: "center",
+    justifyContent: "space-around",
+    paddingBottom: 30,
+  },
+  title: {
+    fontSize: 50,
+    fontWeight: "bold",
+    paddingTop: 30,
+    textAlign: "center",
+    margin: 10,
+  },
+  subTitle: {
+    fontSize: 30,
+    fontWeight: "bold",
+    paddingTop: 30,
+    textAlign: "center",
+  },
+  name: {
+    paddingTop: 10,
+    paddingBottom: 10,
+    fontSize: 30,
+    fontWeight: "bold",
+  },
+  comp: {
+    fontSize: 20,
+  },
+  blerb: {
+    fontSize: 15,
+    marginLeft: 35,
+    marginRight: 35,
+    textAlign: "center",
+    paddingBottom: 10,
+  },
+});

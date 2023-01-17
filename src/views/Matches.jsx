@@ -9,7 +9,6 @@ import {
   Image,
   SafeAreaView,
   TouchableOpacity,
-  Button,
   Modal,
   ScrollView,
 } from "react-native";
@@ -17,7 +16,6 @@ import { Ionicons } from "@expo/vector-icons";
 import { createStackNavigator } from "@react-navigation/stack";
 import Popup from "../components/Popup.jsx";
 import MessagePrompt from "../components/MessagePrompt.jsx";
-import AMatch from "./AMatch";
 
 const Stack = createStackNavigator();
 
