@@ -11,7 +11,7 @@ import {
     ScrollView,
     Pressable
 } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Popup from '../components/Popup.jsx'
 
 export default function CoupleProfile({ navigation, route }) {
@@ -40,12 +40,12 @@ export default function CoupleProfile({ navigation, route }) {
             <View style={styles.top}>
                 <SafeAreaView style={styles.topinfo}>
                     <Pressable onPress={() => setUnmatchVisible(true)} style={styles.xbutton}>
-                        <Ionicons
-                            name="heart-dislike"
+                        <MaterialCommunityIcons
+                            name="heart-broken"
                             size={40}
                             color={"black"}
                             backgroundColor={"black"}
-                        ></Ionicons>
+                        ></MaterialCommunityIcons>
                     </Pressable>
                     <Image source={AnikaData.profileImg} style={styles.profilepic}></Image>
                     <Image
@@ -65,16 +65,16 @@ export default function CoupleProfile({ navigation, route }) {
             <ScrollView style={styles.scroll}>
                 <View style={styles.infobar}>
                     <Text style={styles.profileText}>Visit Anika's original profile</Text>
-                    <Ionicons name="arrow-forward" size={25} />
+                    <MaterialCommunityIcons name="arrow-right-bold" size={30} />
                 </View>
                 <View style={styles.common}>
                     <Text style={styles.profileText}>What you have in common</Text>
                     <View style={styles.heartcon}>
-                        <Ionicons name="heart" style={styles.heart} size={18}></Ionicons>
+                        <MaterialCommunityIcons name="heart" style={styles.heart} size={18}></MaterialCommunityIcons>
                         <Text style={styles.commonText}>You both want 2 kids</Text>
                     </View>
                     <View style={styles.heartcon}>
-                        <Ionicons name="heart" style={styles.heart} size={18}></Ionicons>
+                        <MaterialCommunityIcons name="heart" style={styles.heart} size={18}></MaterialCommunityIcons>
                         <Text style={styles.commonText}>
                             You both want to live in a city
                         </Text>
@@ -83,19 +83,19 @@ export default function CoupleProfile({ navigation, route }) {
                 <View style={styles.common}>
                     <Text style={styles.profileText}>What you disagree on</Text>
                     <View style={styles.heartcon}>
-                        <Ionicons
-                            name="heart-dislike"
+                        <MaterialCommunityIcons
+                            name="heart-broken"
                             style={styles.heart}
                             size={18}
-                        ></Ionicons>
+                        ></MaterialCommunityIcons>
                         <Text style={styles.commonText}>You both want 2 kids</Text>
                     </View>
                     <View style={styles.heartcon}>
-                        <Ionicons
-                            name="heart-dislike"
+                        <MaterialCommunityIcons
+                            name="heart-broken"
                             style={styles.heart}
                             size={18}
-                        ></Ionicons>
+                        ></MaterialCommunityIcons>
                         <Text style={styles.commonText}>
                             You both want to live in a city
                         </Text>
@@ -105,14 +105,14 @@ export default function CoupleProfile({ navigation, route }) {
                     <View style={styles.picslide}>
                         <View style={styles.add}>
                             <Text style={styles.pictext}>Gallery</Text>
-                            <Ionicons name="add" size={28} />
+                            <MaterialCommunityIcons name="plus" size={28} />
                         </View>
                         <ImageSlider images={[...ChaChaData.images, ...AnikaData.images]} isProfile={true}/>
                     </View>
                     <View style={styles.picslide}>
                         <View style={styles.add}>
                             <Text style={styles.pictext}>Where it all started</Text>
-                            <Ionicons name="add" size={28} />
+                            <MaterialCommunityIcons name="plus" size={28} />
                         </View>
                         <PromptSlider
                             prompts={[...AnikaData.prompts, ...ChaChaData.prompts] } isProfile={true}

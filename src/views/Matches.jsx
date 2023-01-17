@@ -12,7 +12,7 @@ import {
   Modal,
   ScrollView,
 } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { createStackNavigator } from "@react-navigation/stack";
 import Popup from "../components/Popup.jsx";
 import MessagePrompt from "../components/MessagePrompt.jsx";
@@ -103,13 +103,13 @@ function ProfilePage({ route, navigation }) {
               })
             }
           >
-            <Ionicons
+            <MaterialCommunityIcons
               name="close-circle-outline"
               size={40}
               color={"black"}
               backgroundColor={"black"}
               style={styles.xbutton}
-            ></Ionicons>
+            ></MaterialCommunityIcons>
             <View style={styles.whiteX} />
           </TouchableOpacity>
           <Image source={userData.profileImg} style={styles.profilepic}></Image>

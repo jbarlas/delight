@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import anikaprofile from "../../assets/anika_profile.jpeg";
 import chaprofile from "../../assets/cha_profile.jpeg";
-import { Ionicons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export default function Unmatch({ navigation, route }) {
   return (
@@ -20,14 +20,14 @@ export default function Unmatch({ navigation, route }) {
           <Text style={styles.subTitle}>Sorry it didn't work out /:</Text>
         </View>
         <View style={styles.pictures}>
-          <Image style={[styles.profilepic, {marginRight: -60, opacity: .4}]} source={anikaprofile}></Image>
-          <Ionicons
-                            name="heart-dislike"
-                            size={80}
+          <Image style={[styles.profilepic, {marginRight: -40, opacity: .4}]} source={anikaprofile}></Image>
+          <MaterialCommunityIcons
+                            name="heart-broken"
+                            size={100}
                             color={"black"}
                             style={{zIndex: 10}}
-                        ></Ionicons>
-          <Image style={[styles.profilepic, {marginLeft: -60}]} source={chaprofile}></Image>
+                        ></MaterialCommunityIcons>
+          <Image style={[styles.profilepic, {marginLeft: -40}]} source={chaprofile}></Image>
         </View>
         <Text style={styles.blerb} numberOfLines={2}>
           We hope your next match will be the one for you!

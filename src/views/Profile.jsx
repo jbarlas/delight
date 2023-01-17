@@ -10,7 +10,7 @@ import {
   SafeAreaView,
   ScrollView,
 } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { createStackNavigator } from "@react-navigation/stack";
 
 const Stack = createStackNavigator();
@@ -89,21 +89,21 @@ function ProfilePage({ route, navigation }) {
             ]}
           >
             <Text style={styles.bartext}>{ChaChaData.location}</Text>
-            <Ionicons name="create" size={28} />
+            <MaterialCommunityIcons name="pencil" size={28} />
           </View>
         </View>
         <View style={styles.slideshows}>
           <View style={styles.picslide}>
             <View style={styles.add}>
               <Text style={styles.pictext}>Gallery</Text>
-              <Ionicons name="add" size={28} />
+              <MaterialCommunityIcons name="plus" size={28} />
             </View>
             <ImageSlider images={ChaChaData.images} isProfile={true}/>
           </View>
           <View style={styles.picslide}>
             <View style={styles.add}>
               <Text style={styles.pictext}>Prompts</Text>
-              <Ionicons name="add" size={28} />
+              <MaterialCommunityIcons name="plus" size={28} />
             </View>
             <PromptSlider prompts={ChaChaData.prompts} isProfile={true} />
           </View>
