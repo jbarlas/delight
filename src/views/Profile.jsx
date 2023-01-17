@@ -38,7 +38,7 @@ function ProfilePage({ route, navigation }) {
     setMatched(!matched);
 
     // this does nothing but we need to do something like this i think
-    navigation.setOptions("Root", { matched: !matched });
+    navigation.navigate("CoupleProfile", { matched: !matched });
   };
   return (
     <View style={styles.container}>

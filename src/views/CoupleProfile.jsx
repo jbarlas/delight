@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import ImageSlider from "../components/imageSlider";
 import PromptSlider from "../components/promptSlider";
 import { ChaChaData, AnikaData } from "../components/UserData";
@@ -14,14 +14,16 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import Popup from '../components/Popup.jsx'
 
-export default function CoupleProfile() {
+export default function CoupleProfile({ navigation, route }) {
     const [unmatchVisible, setUnmatchVisible] = useState(false);
     const [hasUnmatched, setHasUnmatched] = useState(false);
 
     const handleUnmatching = (value) => {
         if (value == 0) {
+            console.log("yes")
+            route.params.setMatched(false)
+            navigation.navigate("Unmatch")
             setHasUnmatched(true)
-            console.log("yes");
         } else {
             console.log("no")
         }

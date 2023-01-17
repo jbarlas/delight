@@ -33,17 +33,19 @@ export default function Profile({ route }) {
           setMatched: route.params.setMatched,
         }}
       />
-      <Stack.Screen
+      {/* <Stack.Screen
           name="AMatch"
           component={AMatch}
-        />
+        /> */}
     </Stack.Navigator>
   );
 }
 
 function ProfilePage({ route, navigation }) {
   const userData = route.params.userData;
-  const [matched, setMatched] = useState(route.params.matched);
+  // const [matched, setMatched] = useState(route.params.matched);
+  const matched = route.params.matched
+  const setMatched = route.params.setMatched
   const [confirmationVisible, setConfirmationVisible] = useState(false);
   const [msgVisible, isMsgVisible] = useState(false);
   const [reactedPromp, setReactedPrompt] = useState(0);
@@ -51,7 +53,8 @@ function ProfilePage({ route, navigation }) {
   const [isPrompt, setIsPrompt] = useState(false);
 
   const toggleMatched = () => {
-    setMatched(!matched);
+
+    navigation.navigate("AMatch", setMatched(true))
     // route.params.setMatched()
 
     // this does nothing but we need to do something like this i think

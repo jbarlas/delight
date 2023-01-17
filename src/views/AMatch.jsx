@@ -1,8 +1,8 @@
 import { React } from "react";
-import { StyleSheet, Text, SafeAreaView, Image, View } from "react-native";
+import { StyleSheet, Text, SafeAreaView, Image, View, Button } from "react-native";
 import anikaprofile from "../../assets/anika_profile.jpeg";
 
-export default function AMatch() {
+export default function AMatch({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>It's a match!</Text>
@@ -17,6 +17,7 @@ export default function AMatch() {
       <Text style={styles.blerb} numberOfLines={2}>
         You are now in match mode and can only communicate with Anika!
       </Text>
+      <Button title="View match" onPress={() => navigation.navigate("Home")}></Button>
     </SafeAreaView>
   );
 }
