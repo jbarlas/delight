@@ -27,7 +27,7 @@ const Stack = createStackNavigator();
 
 export default function Matches() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Navigator screenOptions={{ headerShown: false, gestureEnabled: false,}}>
       <Stack.Screen
         name="user"
         component={MatchProfile}
