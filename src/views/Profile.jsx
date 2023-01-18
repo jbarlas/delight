@@ -10,6 +10,11 @@ import {
   ScrollView,
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import {
+  horizontalScale,
+  moderateScale,
+  verticalScale,
+} from "../components/Metrics";
 
 
 
@@ -25,10 +30,10 @@ export default function Profile({ route }) {
             style={styles.profilepic}
           ></Image>
           <View style={styles.name}>
-            <Text style={{ fontSize: 26, fontWeight: "bold" }}>
+            <Text style={{ fontSize: moderateScale(26), fontWeight: "bold" }}>
               {ChaChaData.name}
             </Text>
-            <Text style={{ fontSize: 18, paddingTop: 5 }}>
+            <Text style={{ fontSize: moderateScale(18), paddingTop: horizontalScale(5) }}>
               Profile {ChaChaData.compatible}% Complete!
             </Text>
           </View>
@@ -65,26 +70,26 @@ export default function Profile({ route }) {
             ]}
           >
             <Text style={styles.bartext}>{ChaChaData.location}</Text>
-            <MaterialCommunityIcons name="pencil" size={28} />
+            <MaterialCommunityIcons name="pencil" size={horizontalScale(28)} />
           </View>
         </View>
         <View style={styles.slideshows}>
           <View style={styles.picslide}>
             <View style={styles.add}>
               <Text style={styles.pictext}>Gallery</Text>
-              <MaterialCommunityIcons name="plus" size={28} />
+              <MaterialCommunityIcons name="plus" size={horizontalScale(28)} />
             </View>
             <ImageSlider images={ChaChaData.images} isProfile={true} color={"#65D9D5"}/>
           </View>
           <View style={styles.picslide}>
             <View style={styles.add}>
               <Text style={styles.pictext}>Prompts</Text>
-              <MaterialCommunityIcons name="plus" size={28} />
+              <MaterialCommunityIcons name="plus" size={horizontalScale(28)} />
             </View>
             <PromptSlider prompts={ChaChaData.prompts} isProfile={true} color={"#65D9D5"}/>
           </View>
         </View>
-        <View style={{height:80, width:"100%"}}></View>
+        <View style={{height:horizontalScale(80), width:"100%"}}></View>
       </ScrollView>
     </View>
   );
@@ -97,9 +102,9 @@ const styles = StyleSheet.create({
   },
   top: {
     backgroundColor: "#65D9D5",
-    height: 150,
+    height: horizontalScale(145),
     width: "100%",
-    borderBottomWidth: 1.5,
+    borderBottomWidth: horizontalScale(1.5),
   },
   topinfo: {
     flex: 1,
@@ -108,9 +113,9 @@ const styles = StyleSheet.create({
   },
   profilepic: {
     marginLeft: "7%",
-    height: 90,
-    width: 90,
-    borderRadius: 50,
+    height: horizontalScale(85),
+    width: horizontalScale(85),
+    borderRadius: horizontalScale(90)/2,
   },
   name: {
     flex: 1,
@@ -119,7 +124,7 @@ const styles = StyleSheet.create({
   },
   scroll: {
     flex: 1,
-    paddingTop: 15,
+    paddingTop: horizontalScale(15),
   },
   infobar: {
     flex: 0.1,
@@ -133,11 +138,11 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
   },
   bartext: {
-    fontSize: 18,
-    paddingTop: 5,
-    paddingBottom: 5,
-    paddingLeft: 15,
-    paddingRight: 15,
+    fontSize: moderateScale(18),
+    paddingTop: horizontalScale(5),
+    paddingBottom: horizontalScale(5),
+    paddingLeft: verticalScale(15),
+    paddingRight: verticalScale(15),
   },
   slideshows: {
     flex: 1,
@@ -146,7 +151,7 @@ const styles = StyleSheet.create({
     flex: 0.5,
   },
   pictext: {
-    fontSize: 20,
+    fontSize: moderateScale(20),
     fontWeight: "bold",
   },
   add: {

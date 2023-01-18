@@ -2,6 +2,11 @@ import React from 'react'
 import { StyleSheet, Text } from "react-native";
 import { Overlay } from '@rneui/base';
 import { ButtonGroup } from '@rneui/themed';
+import {
+    horizontalScale,
+    moderateScale,
+    verticalScale,
+  } from "./Metrics";
 
 export default function Popup(props) {
     return (
@@ -11,8 +16,8 @@ export default function Popup(props) {
                 onPress={props.handlePress}
                 buttons={props.options}
                 buttonStyle={styles.button}
-                containterStyle={{ marginTop: 5, }}
-                textStyle={{ color: "black", fontSize: 16 }} />
+                containterStyle={{ marginTop: horizontalScale(5), }}
+                textStyle={{ color: "black", fontSize: moderateScale(16) }} />
         </Overlay>
     )
 }
@@ -21,13 +26,13 @@ const styles = StyleSheet.create({
     overlay: {
         backgroundColor: "#BFC3CC",
         borderRadius: 10,
-        width: "60%",
+        width: "70%",
         borderWidth: "1px",
-        paddingBottom: 2,
+        padding: horizontalScale(10)
     },
     button: {
         backgroundColor: "#F0F2F6",
         color: "black",
-        padding: 0,
+        paddingBottom: 0,
     },
 })

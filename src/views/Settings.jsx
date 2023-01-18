@@ -3,6 +3,11 @@ import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import settingsData from "../components/settings-data.json"
 import { createStackNavigator } from "@react-navigation/stack";
+import {
+  horizontalScale,
+  moderateScale,
+  verticalScale,
+} from "../components/Metrics";
 
 const Stack = createStackNavigator();
 
@@ -22,10 +27,10 @@ export default function SettingsPage({ route }) {
       {settingsData.map((item) =>
         <View key ={item.iconName} style={styles.row}>
           <View style={styles.mainContent}>
-            <Ionicons name={item.iconName} color={matched ? "#DC8EAE" : "#53ABBB"} size={40}></Ionicons>
+            <Ionicons name={item.iconName} color={matched ? "#DC8EAE" : "#53ABBB"} size={horizontalScale(40)}></Ionicons>
             <Text style={styles.itemText}>{item.text}</Text>
           </View>
-          <Ionicons name="ios-chevron-forward" color="black" size={30}></Ionicons>
+          <Ionicons name="ios-chevron-forward" color="black" size={horizontalScale(30)}></Ionicons>
         </View>)}
     </View>
   );
@@ -38,9 +43,9 @@ const styles = StyleSheet.create({
   },
   top: {
     backgroundColor: "#65D9D5",
-    height: 150,
+    height: horizontalScale(150),
     width: "100%",
-    borderBottomWidth: 1.5,
+    borderBottomWidth: horizontalScale(1.5),
   },
   topinfo: {
     flex: 1,
@@ -51,7 +56,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "left",
     marginLeft: "8%",
-    fontSize: 30,
+    fontSize: moderateScale(30),
     fontWeight: "bold",
   },
   row: {
@@ -59,10 +64,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingLeft: 15,
-    paddingRight: 30,
-    paddingVertical: 12,
-    borderBottomWidth: 1.5,
+    paddingLeft: verticalScale(15),
+    paddingRight: verticalScale(30),
+    paddingVertical: verticalScale(12),
+    borderBottomWidth: horizontalScale(1.5),
   },
   mainContent: {
     display: "flex",
@@ -70,8 +75,8 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   itemText: {
-    fontSize: 22,
+    fontSize: moderateScale(22),
     fontWeight: "bold",
-    paddingHorizontal: 20,
+    paddingHorizontal: horizontalScale(20),
   }
 });

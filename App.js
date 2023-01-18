@@ -12,7 +12,11 @@ import AMatch from "./src/views/AMatch";
 import Unmatch from "./src/views/Unmatch";
 import { createStackNavigator } from "@react-navigation/stack";
 import { ChaChaData, JeffData } from "./src/components/UserData";
-
+import {
+  horizontalScale,
+  moderateScale,
+  verticalScale,
+} from "./src/components/Metrics";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -29,12 +33,9 @@ export default function App() {
           <Stack.Screen
             name="Home-Unmatched"
             component={UnmatchedNavBar}
-            initialParams={{userData: JeffData}}
+            initialParams={{ userData: JeffData }}
           />
-          <Stack.Screen
-            name="Home-Matched"
-            component={MatchedNavBar}
-          />
+          <Stack.Screen name="Home-Matched" component={MatchedNavBar} />
           <Stack.Screen name="Match" component={AMatch} />
           <Stack.Screen name="Unmatch" component={Unmatch} />
         </Stack.Navigator>
@@ -48,16 +49,16 @@ function MatchedNavBar() {
     <TouchableWithoutFeedback onPress={onPress}>
       <View
         style={{
-          top: -30,
+          top: horizontalScale(-30),
           justifyContent: "center",
           alignItems: "center",
         }}
       >
         <View
           style={{
-            height: 90,
-            width: 90,
-            borderRadius: 45,
+            height: verticalScale(90),
+            width: verticalScale(90),
+            borderRadius: verticalScale(90) / 2,
             backgroundColor: "#F0F2F6",
             borderWidth: 1,
             borderColor: "black",
@@ -74,7 +75,7 @@ function MatchedNavBar() {
       screenOptions={({ route }) => ({
         tabBarStyle: {
           backgroundColor: "#F6BCD4",
-          height: 80,
+          height: horizontalScale(80),
           borderTopWidth: 1,
           borderTopColor: "black",
         },
@@ -85,15 +86,15 @@ function MatchedNavBar() {
 
           if (route.name === "Settings") {
             iconName = focused ? "settings" : "settings-outline";
-            size = 35;
+            size = horizontalScale(35);
             color = focused ? "black" : "grey";
           } else if (route.name === "CoupleProfile") {
             iconName = focused ? "people" : "people-outline";
-            size = 35;
+            size = horizontalScale(35);
             color = focused ? "black" : "grey";
           } else if (route.name === "Messaging") {
             iconName = "chatbox-ellipses";
-            size = 57;
+            size = horizontalScale(57);
             color = focused ? "#F6BCD4" : "gray";
           } else {
             color = "white";
@@ -105,10 +106,7 @@ function MatchedNavBar() {
         tabBarShowLabel: false,
       })}
     >
-      <Tab.Screen
-        name="CoupleProfile"
-        component={CoupleProfile}
-      />
+      <Tab.Screen name="CoupleProfile" component={CoupleProfile} />
       <Tab.Screen
         name="Messaging"
         options={{
@@ -130,16 +128,16 @@ function UnmatchedNavBar() {
     <TouchableWithoutFeedback onPress={onPress}>
       <View
         style={{
-          top: -30,
+          top: horizontalScale(-30),
           justifyContent: "center",
           alignItems: "center",
         }}
       >
         <View
           style={{
-            height: 90,
-            width: 90,
-            borderRadius: 45,
+            height: verticalScale(90),
+            width: verticalScale(90),
+            borderRadius: verticalScale(90) / 2,
             backgroundColor: "#F0F2F6",
             borderWidth: 1,
             borderColor: "black",
@@ -152,11 +150,11 @@ function UnmatchedNavBar() {
   );
   return (
     <Tab.Navigator
-    initialRouteName="Matches"
+      initialRouteName="Matches"
       screenOptions={({ route }) => ({
         tabBarStyle: {
           backgroundColor: "#65D9D5",
-          height: 80,
+          height: horizontalScale(80),
           borderTopWidth: 1,
           borderTopColor: "black",
         },
@@ -167,15 +165,15 @@ function UnmatchedNavBar() {
 
           if (route.name === "Profile") {
             iconName = focused ? "person" : "person-outline";
-            size = 35;
+            size = horizontalScale(35);
             color = focused ? "black" : "grey";
           } else if (route.name === "Matches") {
             iconName = "heart";
-            size = 57;
+            size = horizontalScale(57);
             color = focused ? "#65D9D5" : "gray";
           } else if (route.name === "Settings") {
             iconName = focused ? "settings" : "settings-outline";
-            size = 35;
+            size = horizontalScale(35);
             color = focused ? "black" : "grey";
           } else {
             color = "white";

@@ -1,6 +1,7 @@
 import { React, useState } from "react";
 import { Image, View, StyleSheet, Button, Pressable } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { horizontalScale, moderateScale, verticalScale } from "./Metrics";
 
 const ImageSlider = (props) => {
   const color = props.color;
@@ -35,18 +36,21 @@ const ImageSlider = (props) => {
       <Pressable onPress={prevArrow} style={styles.menuLeft}>
         <MaterialCommunityIcons
           name="chevron-left"
-          size={40}
+          size={horizontalScale(40)}
           color={prevImage === -1 ? "lightgrey" : color}
         />
       </Pressable>
       {prevImage === -1 ? (
         <Image
-          style={[styles.swipepics, { marginRight: -185, opacity: 0 }]}
+          style={[
+            styles.swipepics,
+            { marginRight: verticalScale(-185), opacity: 0 },
+          ]}
           source={images[prevImage]}
         />
       ) : (
         <Image
-          style={[styles.swipepics, { marginRight: -185 }]}
+          style={[styles.swipepics, { marginRight: verticalScale(-185) }]}
           source={images[prevImage]}
         />
       )}
@@ -57,19 +61,22 @@ const ImageSlider = (props) => {
       </View>
       {nextImage === length ? (
         <Image
-          style={[styles.swipepics, { marginLeft: -185, opacity: 0 }]}
+          style={[
+            styles.swipepics,
+            { marginLeft: verticalScale(-185), opacity: 0 },
+          ]}
           source={images[nextImage]}
         />
       ) : (
         <Image
-          style={[styles.swipepics, { marginLeft: -185 }]}
+          style={[styles.swipepics, { marginLeft: verticalScale(-185) }]}
           source={images[nextImage]}
         />
       )}
       <Pressable onPress={nextArrow} style={styles.menuRight}>
         <MaterialCommunityIcons
           name="chevron-right"
-          size={40}
+          size={horizontalScale(40)}
           color={nextImage === length ? "lightgrey" : color}
         />
       </Pressable>
@@ -85,8 +92,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   slideshowpics: {
-    width: 300,
-    height: 200,
+    aspectRatio: 3 / 2,
+    height: horizontalScale(190),
     resizeMode: "cover",
     zIndex: 50,
     shadowColor: "#000",
@@ -96,18 +103,15 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   menuLeft: {
-    marginRight: -10,
+    marginRight: verticalScale(-10),
   },
   menuRight: {
-    marginLeft: -10,
+    marginLeft: verticalScale(-10),
   },
   swipepics: {
-    width: 200,
-    height: 150,
+    width: verticalScale(200),
+    height: horizontalScale(150),
     resizeMode: "cover",
-  },
-  button: {
-    fontSize: 20,
   },
 });
 

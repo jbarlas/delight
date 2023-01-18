@@ -2,6 +2,11 @@ import { React } from "react";
 import { StyleSheet, Text, SafeAreaView, Image, View, TouchableHighlight} from "react-native";
 import anikaprofile from "../../assets/anika_profile.jpeg";
 import { MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
+import {
+  horizontalScale,
+  moderateScale,
+  verticalScale,
+} from "../components/Metrics";
 
 export default function AMatch({navigation}) {
   return (
@@ -25,7 +30,7 @@ export default function AMatch({navigation}) {
           onPress={() => navigation.navigate("Home-Matched")}
         >
           <View style={styles.buttonView}>
-            <Ionicons name="chatbox-ellipses" size={40} color={"#F5D9E5"} />
+            <Ionicons name="chatbox-ellipses" size={horizontalScale(40)} color={"#F5D9E5"} style={{paddingLeft: "4%"}} />
             <Text style={styles.buttonText}>Message Anika</Text>
           </View>
         </TouchableHighlight>
@@ -41,42 +46,42 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
   },
   profilepic: {
-    height: 180,
-    width: 180,
-    borderRadius: 100,
-    borderWidth: 6,
+    height: horizontalScale(180),
+    width: horizontalScale(180),
+    borderRadius: horizontalScale(180)/2,
+    borderWidth: horizontalScale(6),
     borderColor: "#DC8EAE",
   },
   info: {
     flex: 0.5,
     backgroundColor: "#F5D9E5",
     alignItems: "center",
-    justifyContent: "space-around",
-    paddingBottom: 30,
+    justifyContent: "center",
+    paddingBottom: horizontalScale(30),
   },
   title: {
-    fontSize: 50,
+    fontSize: moderateScale(50),
     fontWeight: "bold",
-    paddingTop: 30,
+    paddingTop: horizontalScale(30),
   },
   name: {
-    paddingTop: 10,
-    paddingBottom: 10,
-    fontSize: 30,
+    paddingTop: horizontalScale(10),
+    paddingBottom: horizontalScale(10),
+    fontSize: moderateScale(30),
     fontWeight: "bold",
   },
   comp: {
-    fontSize: 20,
+    fontSize: moderateScale(20),
   },
   blerb: {
-    fontSize: 15,
-    marginLeft: 35,
-    marginRight: 35,
+    fontSize: moderateScale(15),
+    marginLeft: verticalScale(35),
+    marginRight: verticalScale(35),
     textAlign: "center",
-    paddingBottom: 80,
+    paddingBottom: horizontalScale(80),
   },
   button: {
-    heigh: 100,
+    heigh: horizontalScale(100),
     width: "75%",
     backgroundColor: "#DC8EAE",
     borderRadius: 30
@@ -84,11 +89,11 @@ const styles = StyleSheet.create({
   buttonView: {
     flexDirection: "row",
     alignItems: "center",
-    padding: 10
+    padding: horizontalScale(10)
   },
   buttonText: {
-    paddingLeft: "10%",
-    fontSize: 22,
+    paddingLeft: "8%",
+    fontSize: moderateScale(22),
     fontWeight: "bold"
   }
 });

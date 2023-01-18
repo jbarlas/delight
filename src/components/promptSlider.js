@@ -1,6 +1,7 @@
 import { React, useState } from "react";
 import { View, StyleSheet, Button, Text, Pressable } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { horizontalScale, moderateScale, verticalScale } from "./Metrics";
 
 const PromptSlider = (props) => {
   const color = props.color;
@@ -35,14 +36,21 @@ const PromptSlider = (props) => {
       <Pressable onPress={prevArrow} style={styles.menuLeft}>
         <MaterialCommunityIcons
           name="chevron-left"
-          size={40}
+          size={horizontalScale(40)}
           color={prevPrompt === -1 ? "lightgrey" : color}
         />
       </Pressable>
       {prevPrompt === -1 ? (
-        <View style={[styles.swipepics, { marginRight: -185, opacity: 0 }]} />
+        <View
+          style={[
+            styles.swipepics,
+            { marginRight: verticalScale(-185), opacity: 0 },
+          ]}
+        />
       ) : (
-        <View style={[styles.swipepics, { marginRight: -185 }]} />
+        <View
+          style={[styles.swipepics, { marginRight: verticalScale(-185) }]}
+        />
       )}
 
       <View style={styles.slideshowpics}>
@@ -53,14 +61,19 @@ const PromptSlider = (props) => {
       </View>
 
       {nextPrompt === length ? (
-        <View style={[styles.swipepics, { marginLeft: -185, opacity: 0 }]} />
+        <View
+          style={[
+            styles.swipepics,
+            { marginLeft: verticalScale(-185), opacity: 0 },
+          ]}
+        />
       ) : (
-        <View style={[styles.swipepics, { marginLeft: -185 }]} />
+        <View style={[styles.swipepics, { marginLeft: verticalScale(-185) }]} />
       )}
       <Pressable onPress={nextArrow} style={styles.menuRight}>
         <MaterialCommunityIcons
           name="chevron-right"
-          size={40}
+          size={horizontalScale(40)}
           color={nextPrompt === length ? "lightgrey" : color}
         />
       </Pressable>
@@ -76,8 +89,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   slideshowpics: {
-    width: 300,
-    height: 200,
+    aspectRatio: 3 / 2,
+    height: horizontalScale(190),
     zIndex: 50,
     backgroundColor: "#F0F2F6",
     shadowColor: "#000",
@@ -87,31 +100,28 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   swipepics: {
-    width: 200,
-    height: 150,
+    width: verticalScale(200),
+    height: horizontalScale(150),
     backgroundColor: "#F0F2F6",
   },
   menuLeft: {
-    marginRight: -10,
+    marginRight: verticalScale(-10),
   },
   menuRight: {
-    marginLeft: -10,
+    marginLeft: verticalScale(-10),
   },
   prompthead: {
-    fontSize: 20,
-    paddingTop: 5,
-    marginLeft: 10,
-    marginRight: 10,
+    fontSize: moderateScale(20),
+    paddingTop: horizontalScale(5),
+    marginLeft: verticalScale(10),
+    marginRight: verticalScale(10),
     fontWeight: "bold",
   },
   promptbody: {
-    fontSize: 18,
-    paddingTop: 5,
-    marginLeft: 10,
-    marginRight: 10,
-  },
-  button: {
-    fontSize: 20,
+    fontSize: moderateScale(18),
+    paddingTop: horizontalScale(5),
+    marginLeft: verticalScale(10),
+    marginRight: verticalScale(10),
   },
 });
 

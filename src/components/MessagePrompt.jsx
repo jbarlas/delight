@@ -9,7 +9,11 @@ import {
 } from "react-native";
 import { Card, Button as IconButton } from "@rneui/themed";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { patchWebProps } from "@rneui/base";
+import {
+  horizontalScale,
+  moderateScale,
+  verticalScale,
+} from "./Metrics";
 
 export default function Popup(props) {
   const handleReactionSent = () => {
@@ -25,11 +29,12 @@ export default function Popup(props) {
         onPress={() => props.isMsgVisible(false)}
         name="close-circle-outline"
         color="black"
-        size={40}
-        style={{ right: -155, marginTop: 48 }}
+        size={horizontalScale(40)}
+        style={styles.xbutton}
       ></Ionicons>
+      <View ></View>
       <View>
-        <Card containerStyle={{ marginBottom: 15, width: 225 }}>
+        <Card containerStyle={{ marginBottom: horizontalScale(15), width: verticalScale(225) }}>
           {props.isAPrompt === true ? (
             <View>
               <Card.Title>{props.prompt}</Card.Title>
@@ -43,13 +48,12 @@ export default function Popup(props) {
         <View style={styles.messaging}>
           <IconButton
             onPress={handleReactionSent}
-            icon={<Ionicons name="send" color="black" size={20}></Ionicons>}
+            icon={<Ionicons name="send" color="black" size={horizontalScale(20)}></Ionicons>}
             color="rgba(240, 242, 246, 0)"
           />
           <TextInput
             autoFocus={true}
             style={{ ...styles.input, width: "80%" }}
-            // onSubmitEditing={handleReactionSent}
           />
         </View>
       </View>
@@ -75,22 +79,35 @@ const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 1,
-    width: 200,
-    padding: 5,
-    margin: 15,
+    width: verticalScale(200),
+    backgroundColor: "white",
+    paddingBottom: horizontalScale(5),
+    paddingRight: verticalScale(5),
+    paddingLeft: verticalScale(5),
+    paddingTop: horizontalScale(5),
+    marginBottom: horizontalScale(15),
+    marginTop: horizontalScale(15),
+    marginRight: verticalScale(15),
+    marginLeft: verticalScale(15)
   },
   xbutton: {
     position: "absolute",
-    height: 45,
-    width: 45,
-    top: 55,
-    left: "83%",
+    height: horizontalScale(45),
+    width: horizontalScale(45),
+    top: horizontalScale(44),
+    right: verticalScale(15),
   },
   picture: {
     resizeMode: "cover",
-    width: 230,
-    height: 120,
-    padding: -5,
-    margin: -15,
+    aspectRatio: 2 / 1,
+    height: horizontalScale(120),
+    paddingBottom: horizontalScale(-5),
+    paddingRight: verticalScale(-5),
+    paddingLeft: verticalScale(-5),
+    paddingTop: horizontalScale(-5),
+    marginBottom: horizontalScale(-15),
+    marginTop: horizontalScale(-15),
+    marginRight: verticalScale(-15),
+    marginLeft: verticalScale(-15)
   },
 });
